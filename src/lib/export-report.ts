@@ -98,7 +98,7 @@ export function formatClearanceMarkdown(result: ExportableResult): string {
   return lines.join("\n");
 }
 
-/** Prompt pasteable into Cursor / Claude Code / Copilot Chat. */
+/** Prompt pasteable into Cursor / Claude Code / Copilot / other AI coding agents. */
 export function formatCursorPrompt(result: ExportableResult): string {
   const stamp = stampLabel(result.clearance);
   const priority = result.priorityFixIds

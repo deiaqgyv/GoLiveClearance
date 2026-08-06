@@ -83,7 +83,7 @@ function FixPanel({ fixes, fallback }: { fixes?: FindingFix[]; fallback?: Findin
       <p className="mt-1.5 font-mono text-[10px] text-[var(--pass-mute)]">
         {current.label}
         {current.stack === "ai"
-          ? " — paste into Cursor / Claude / Copilot"
+          ? " — paste into any AI coding agent"
           : current.stack === "server"
             ? " — Java / nginx / SSR templates"
             : null}
