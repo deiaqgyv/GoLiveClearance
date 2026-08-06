@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
+import { GoogleAnalytics } from "@/components/google-analytics";
 
 export const metadata: Metadata = {
   title: {
@@ -21,6 +22,9 @@ export const metadata: Metadata = {
     "launch checklist",
   ],
   authors: [{ name: "Go-Live Clearance" }],
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://www.goliveclearance.com"
+  ),
   openGraph: {
     title: "Go-Live Site Clearance",
     description:
@@ -41,6 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased text-[var(--foreground)]">
+        <GoogleAnalytics />
         <Header />
         <main>{children}</main>
       </body>
