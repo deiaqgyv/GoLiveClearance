@@ -129,16 +129,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   // Cache hit: reuse result, do not consume rate-limit quota
   const cached = getCachedResult(url.toString(), ip) as ScanResult | null;
   if (cached) {
-    const { id, expiresAt } = saveReport(cached);
+    const { id, expiresAt, token } = saveReport(cached);
     const domain = request.headers.get("host") || "localhost:3000";
     const protocol = request.headers.get("x-forwarded-proto") || "http";
-    const reportUrl = `${protocol}://${domain}/report/${id}`;
+    const reportUrl = `${protocol}://${domain}/report/${id}?t=${encodeURIComponent(token)}`;
 
     return NextResponse.json({
       ...cached,
       id,
       reportId: id,
       reportUrl,
+      reportToken: token,
       expiresAt,
     });
   }
@@ -180,16 +181,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     setCachedResult(url.toString(), ip, result);
 
-    const { id, expiresAt } = saveReport(result);
+    const { id, expiresAt, token } = saveReport(result);
     const domain = request.headers.get("host") || "localhost:3000";
     const protocol = request.headers.get("x-forwarded-proto") || "http";
-    const reportUrl = `${protocol}://${domain}/report/${id}`;
+    const reportUrl = `${protocol}://${domain}/report/${id}?t=${encodeURIComponent(token)}`;
 
     return NextResponse.json({
       ...result,
       id,
       reportId: id,
       reportUrl,
+      reportToken: token,
       expiresAt,
     });
   } catch (err) {

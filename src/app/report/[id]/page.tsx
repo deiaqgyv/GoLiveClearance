@@ -16,11 +16,16 @@ export const dynamic = "force-dynamic";
 
 interface Props {
   params: Promise<{ id: string }>;
+  searchParams: Promise<{ t?: string }>;
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+  searchParams,
+}: Props): Promise<Metadata> {
   const { id } = await params;
-  const report = getReport(id);
+  const { t } = await searchParams;
+  const report = getReport(id, t);
   if (!report) return { title: "Report Not Found" };
 
   const stamp =
@@ -54,9 +59,10 @@ function blurb(
   return "Zero blockers. Zero warnings. Cleared to ship.";
 }
 
-export default async function ReportPage({ params }: Props) {
+export default async function ReportPage({ params, searchParams }: Props) {
   const { id } = await params;
-  const report = getReport(id);
+  const { t } = await searchParams;
+  const report = getReport(id, t);
 
   if (!report) {
     notFound();
@@ -66,9 +72,10 @@ export default async function ReportPage({ params }: Props) {
   const restFindings = result.findings.filter(
     (f) => !result.priorityFixIds.includes(f.id)
   );
+  const tokenQuery = t ? `?t=${encodeURIComponent(t)}` : "";
   const exportResult = {
     ...result,
-    reportUrl: `${SITE.domain.replace(/\/$/, "")}/report/${result.id}`,
+    reportUrl: `${SITE.domain.replace(/\/$/, "")}/report/${result.id}${tokenQuery}`,
   };
 
   return (

@@ -18,17 +18,18 @@
 │   │   ├── methodology/page.tsx # Methodology explanation
 │   │   ├── about/page.tsx       # About page
 │   │   ├── layout.tsx           # Root layout
-│   │   ├── page.tsx             # Homepage (scan UI)
+│   │   ├── page.tsx             # Homepage (intro + scan form → report)
 │   │   └── globals.css          # Design tokens + animations
 │   ├── components/
-│   │   ├── scan-client.tsx      # Homepage client component (URL input + results)
-│   │   ├── clearance-badge.tsx  # Clearance stamp (CLEARED/DENIED)
+│   │   ├── scan-form.tsx        # URL form → POST /api/scan → /report/[id]
+│   │   ├── sample-pass.tsx      # Static sample certificate on homepage
+│   │   ├── clearance-badge.tsx  # Clearance stamp (CLEARED/HOLD/DENIED)
 │   │   ├── finding-list.tsx     # Finding cards with CopyFixButton
 │   │   ├── header.tsx           # Site header with nav
 │   │   └── ui/                  # shadcn/ui components
 │   └── lib/
 │       ├── types.ts             # Re-exports scan types
-│       ├── report-store.ts      # In-memory report store (r_ prefix IDs, 7-day TTL)
+│       ├── report-store.ts      # Signed deflate token in ?t= (+ memory cache; 7-day TTL)
 │       ├── rate-limit.ts        # Layered limiter (concurrency + burst + unique-host; 3m cache; dev bypass)
 │       └── scan/
 │           ├── types.ts         # Core types (Severity, CheckId, Finding, ScanResult)
@@ -82,10 +83,12 @@
 - Copy-to-clipboard button on code blocks
 
 ### Report Storage
-- In-memory Map with `r_` prefix IDs (8 chars, no ambiguous chars)
-- 7-day TTL with periodic cleanup
+- Shareable links embed a signed compressed payload (`/report/[id]?t=…`) so Vercel serverless needs no KV
+- Fix code stripped from token and rehydrated from the fix library on read
+- Optional in-memory Map cache (same instance only); `r_` prefix IDs (8 chars, no ambiguous chars)
+- 7-day TTL enforced via `expiresAt` inside the signed payload
 - Reports accessible via `/report/[id]` (noindex, nofollow)
-- Response includes `reportUrl` and `expiresAt`
+- Response includes `reportUrl`, `reportToken`, and `expiresAt`
 
 ## API Contract
 
@@ -102,7 +105,8 @@
   "platform": "vercel",
   "meta": { "durationMs": 1234, "checksRun": 12 },
   "summary": { "blockers": 0, "warnings": 3 },
-  "reportUrl": "https://domain/report/r_ABCD1234",
+  "reportUrl": "https://domain/report/r_ABCD1234?t=v1.…",
+  "reportToken": "v1.…",
   "expiresAt": "2024-01-14T00:00:00.000Z"
 }
 ```

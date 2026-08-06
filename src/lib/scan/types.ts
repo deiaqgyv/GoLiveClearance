@@ -88,4 +88,6 @@ export interface ApiError {
 // API success response = ScanResult + reportUrl
 export interface ScanResponse extends ScanResult {
   reportUrl: string;
+  /** Signed payload for shareable /report/[id]?t=… links (no shared KV). */
+  reportToken?: string;
 }

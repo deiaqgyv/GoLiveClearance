@@ -45,9 +45,7 @@ export function ExportActions({
   const { copied, copy } = useCopy();
   const reportUrl =
     result.reportUrl ||
-    (typeof window !== "undefined"
-      ? `${window.location.origin}/report/${result.id}`
-      : "");
+    (typeof window !== "undefined" ? window.location.href.split("#")[0] : "");
   const hasFixes =
     result.priorityFixIds.length > 0 ||
     result.findings.some(

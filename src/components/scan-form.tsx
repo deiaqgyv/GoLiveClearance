@@ -52,7 +52,11 @@ export function ScanForm({
         }
 
         const id = data.id as string;
-        router.push(`/report/${id}`);
+        const token = data.reportToken as string | undefined;
+        const href = token
+          ? `/report/${id}?t=${encodeURIComponent(token)}`
+          : `/report/${id}`;
+        router.push(href);
       } catch {
         setError("Network error. Please try again.");
         setLoading(false);
