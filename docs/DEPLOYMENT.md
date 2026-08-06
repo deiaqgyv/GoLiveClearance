@@ -287,7 +287,29 @@ Vercel 跑的是 Next.js Serverless / Fluid，**不使用** `src/server.ts`。
 
 - 绑定自定义域名（Settings → Domains），并把 `NEXT_PUBLIC_SITE_URL` 改成正式域名后 Redeploy
 - 报告持久化：Upstash Redis / Vercel KV（替换内存 Map）
-- GA4：`NEXT_PUBLIC_GA_ID`
+- GA4：`NEXT_PUBLIC_GA_ID`（建议域名生效 + GSC 验证后再装）
+- 联盟：`NEXT_PUBLIC_AFFILIATE_MONITOR_URL`（报告页 After you fix blockers；未设置则只展示文案）
+
+### 12.6 域名到手后的绑定清单
+
+域名购买完成后按序操作（约 10–20 分钟）：
+
+1. Vercel → Project → **Settings → Domains** → 添加 apex + `www`
+2. 在注册商按 Vercel 提示加 **A / CNAME**（或 NS 转到 Vercel DNS）
+3. 等 SSL 显示 **Valid**；选一个规范主机并 301 另一边
+4. 更新环境变量：`NEXT_PUBLIC_SITE_URL=https://你的正式域名` → **Redeploy**
+5. [Google Search Console](https://search.google.com/search-console) 添加资源 → 验证 → 提交 `https://你的域名/sitemap.xml`
+6. （可选）GA4 测量 ID 写入 `NEXT_PUBLIC_GA_ID` 后再 Redeploy
+
+当前工具落地页（已进 sitemap）：
+
+| 路径 | 意图 |
+|------|------|
+| `/robots-txt-checker` | Disallow:/、sitemap 行 |
+| `/security-headers-checker` | HSTS / CSP / XFO 等 |
+| `/ssl-https-checker` | HTTPS 跳转与证书信号 |
+| `/website-launch-checklist` | 上线事故清单 |
+| `/nextjs-production-checklist` | Next / Vercel 修法 |
 
 ---
 

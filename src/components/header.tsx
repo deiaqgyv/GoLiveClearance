@@ -17,6 +17,24 @@ export function Header() {
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1">
           <Link
+            href="/robots-txt-checker"
+            className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
+          >
+            Robots
+          </Link>
+          <Link
+            href="/security-headers-checker"
+            className="hidden font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)] sm:inline"
+          >
+            Headers
+          </Link>
+          <Link
+            href="/ssl-https-checker"
+            className="hidden font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)] md:inline"
+          >
+            HTTPS
+          </Link>
+          <Link
             href="/website-launch-checklist"
             className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
           >
@@ -36,7 +54,7 @@ export function Header() {
           </Link>
           <Link
             href="/about"
-            className="hidden font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)] sm:inline"
+            className="hidden font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)] lg:inline"
           >
             About
           </Link>

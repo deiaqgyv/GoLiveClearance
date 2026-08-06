@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
+import { TOOL_ROUTES } from "@/lib/tool-routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = SITE.domain.replace(/\/$/, "");
@@ -7,18 +8,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
-    {
-      url: `${base}/website-launch-checklist`,
+    ...TOOL_ROUTES.map((t) => ({
+      url: `${base}${t.path}`,
       lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    {
-      url: `${base}/nextjs-production-checklist`,
-      lastModified: now,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
+      changeFrequency: "monthly" as const,
+      priority: t.priority,
+    })),
     {
       url: `${base}/methodology`,
       lastModified: now,

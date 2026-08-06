@@ -1,4 +1,5 @@
-// TECH_SPEC §10: Report page — boarding-pass certificate
+// TECH_SPEC §10: Report page — boarding-pass certificate (detail after scan)
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
@@ -8,6 +9,8 @@ import { ClearanceBadge } from "@/components/clearance-badge";
 import { FindingList } from "@/components/finding-list";
 import { PriorityFixes } from "@/components/priority-fixes";
 import { ExportActions } from "@/components/export-actions";
+import { AffiliateOffer } from "@/components/affiliate-offer";
+import { ScanForm } from "@/components/scan-form";
 
 export const dynamic = "force-dynamic";
 
@@ -63,23 +66,39 @@ export default async function ReportPage({ params }: Props) {
   const restFindings = result.findings.filter(
     (f) => !result.priorityFixIds.includes(f.id)
   );
+  const exportResult = {
+    ...result,
+    reportUrl: `${SITE.domain.replace(/\/$/, "")}/report/${result.id}`,
+  };
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-10 md:py-14">
+    <div className="mx-auto max-w-5xl px-4 py-10 md:py-14">
+      <nav className="mb-6 flex items-center justify-between gap-3">
+        <Link
+          href="/"
+          className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
+        >
+          ← Home
+        </Link>
+        <p className="font-mono text-[10px] text-[var(--pass-mute)]">
+          Report detail
+        </p>
+      </nav>
+
       <article className="overflow-hidden border border-[var(--pass-line)] bg-white">
         <div className="border-b border-dashed border-[var(--pass-line)] px-5 py-4 sm:px-8">
           <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
+            <div className="min-w-0">
               <p className="field-label">Inspection certificate</p>
               <p className="mt-1 font-display text-base font-semibold text-[var(--pass-ink)]">
                 {result.urlInput}
               </p>
+              <p className="mt-1 font-mono text-[10px] leading-relaxed text-[var(--pass-mute)]">
+                DOC {result.id} · Issued {new Date(createdAt).toLocaleString()} ·
+                Valid until {new Date(expiresAt).toLocaleDateString()}
+              </p>
             </div>
-            <div className="text-right font-mono text-[10px] leading-relaxed text-[var(--pass-mute)]">
-              <p>DOC {result.id}</p>
-              <p>Issued {new Date(createdAt).toLocaleString()}</p>
-              <p>Valid until {new Date(expiresAt).toLocaleDateString()}</p>
-            </div>
+            <ExportActions result={exportResult} variant="header" />
           </div>
         </div>
 
@@ -150,31 +169,27 @@ export default async function ReportPage({ params }: Props) {
             </div>
           )}
 
-          <ExportActions
-            result={{
-              ...result,
-              reportUrl: `${SITE.domain.replace(/\/$/, "")}/report/${result.id}`,
-            }}
-          />
-        </div>
+          <ExportActions result={exportResult} variant="footer" />
 
-        <div className="border-t border-dashed border-[var(--pass-line)] bg-[var(--gate-surface)] px-5 py-6 sm:px-8">
-          <div className="flex flex-col items-center gap-3">
-            <Link
-              href={`/?url=${encodeURIComponent(result.urlInput)}`}
-              className="border border-[var(--pass-ink)] bg-[var(--pass-ink)] px-6 py-2.5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-white"
-            >
-              Re-inspect this URL
-            </Link>
-            <Link
-              href="/"
-              className="font-mono text-xs text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
-            >
-              Inspect another URL
-            </Link>
-          </div>
+          <AffiliateOffer clearance={result.clearance} />
         </div>
       </article>
+
+      <section className="mt-10" aria-labelledby="rescan-heading">
+        <h2
+          id="rescan-heading"
+          className="mb-4 font-display text-lg font-semibold text-[var(--pass-ink)]"
+        >
+          Re-inspect
+        </h2>
+        <Suspense
+          fallback={
+            <div className="h-28 border border-[var(--pass-line)] bg-white" />
+          }
+        >
+          <ScanForm variant="compact" defaultUrl={result.urlInput} />
+        </Suspense>
+      </section>
     </div>
   );
 }

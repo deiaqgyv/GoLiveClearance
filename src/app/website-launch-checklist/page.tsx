@@ -1,6 +1,7 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ScanClient } from "@/components/scan-client";
+import { ScanForm } from "@/components/scan-form";
 
 export const metadata: Metadata = {
   title: "Website Launch Checklist — Free Pre-Launch Clearance",
@@ -67,7 +68,13 @@ export default function WebsiteLaunchChecklistPage() {
       </p>
 
       <section className="mt-10">
-        <ScanClient showSample={false} />
+        <Suspense
+          fallback={
+            <div className="h-28 border border-[var(--pass-line)] bg-white" />
+          }
+        >
+          <ScanForm variant="compact" />
+        </Suspense>
       </section>
 
       <section className="mt-14">
@@ -119,6 +126,31 @@ export default function WebsiteLaunchChecklistPage() {
           Related
         </h2>
         <ul className="mt-3 space-y-2 text-sm">
+          <li>
+            <Link
+              href="/robots-txt-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              robots.txt checker
+            </Link>
+            <span className="text-stone-500"> — Disallow:/ & sitemap line</span>
+          </li>
+          <li>
+            <Link
+              href="/security-headers-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              Security headers checker
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/ssl-https-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              SSL / HTTPS checker
+            </Link>
+          </li>
           <li>
             <Link
               href="/nextjs-production-checklist"

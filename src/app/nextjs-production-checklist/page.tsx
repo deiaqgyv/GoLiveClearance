@@ -1,6 +1,7 @@
+import { Suspense } from "react";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ScanClient } from "@/components/scan-client";
+import { ScanForm } from "@/components/scan-form";
 
 export const metadata: Metadata = {
   title: "Next.js Production Checklist — App Router Go-Live Clearance",
@@ -80,11 +81,17 @@ export default function NextjsProductionChecklistPage() {
         Local looks fine. Preview looks fine. Production still ships with{" "}
         <code className="bg-[var(--secondary)] px-1 font-mono text-xs">noindex</code>,
         missing headers, or OG images on the wrong host. Scan the live URL, then
-        paste the Cursor prompt into your editor.
+        paste the AI prompt into your editor.
       </p>
 
       <section className="mt-10">
-        <ScanClient showSample={false} />
+        <Suspense
+          fallback={
+            <div className="h-28 border border-[var(--pass-line)] bg-white" />
+          }
+        >
+          <ScanForm variant="compact" />
+        </Suspense>
       </section>
 
       <section className="mt-14">
@@ -128,6 +135,22 @@ export default function NextjsProductionChecklistPage() {
           Related
         </h2>
         <ul className="mt-3 space-y-2 text-sm">
+          <li>
+            <Link
+              href="/robots-txt-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              robots.txt checker
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/security-headers-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              Security headers checker
+            </Link>
+          </li>
           <li>
             <Link
               href="/website-launch-checklist"
