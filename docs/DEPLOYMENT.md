@@ -294,7 +294,7 @@ Vercel 跑的是 Next.js Serverless / Fluid，**不使用** `src/server.ts`。
 
 ### 12.6 域名到手后的绑定清单
 
-**状态（2026-08-06）：** 域名已在 Vercel 添加；规范主机为 **www**；apex `308` → www。DNS 尚未在阿里云解析完成前会显示 Invalid Configuration。
+**状态（2026-08-06）：** DNS 已生效；`goliveclearance.com` / `www` 均为 **Valid Configuration**；规范主机 **www**；apex `308` → www；`NEXT_PUBLIC_SITE_URL=https://www.goliveclearance.com`。
 
 在阿里云万网（控制台 → 域名 → `goliveclearance.com` → 解析设置）添加：
 
