@@ -233,4 +233,62 @@ GitHub Actions 示例职责（不必第一天就有）：
 
 ---
 
-**下一步：** 实现契约见 [TECH_SPEC.md](./TECH_SPEC.md)；开发时在 Vercel 导入本仓库并绑定预览域名即可开工。
+---
+
+## 12. 生产落地记录（已上线）
+
+| 字段 | 值 |
+|------|-----|
+| GitHub | https://github.com/deiaqgyv/GoLiveClearance |
+| Vercel 项目 | `go-live-clearance`（Hobby） |
+| 生产域名 | https://go-live-clearance.vercel.app |
+| 控制台 | https://vercel.com/22550555-9493s-projects/go-live-clearance |
+| Framework | Next.js（`vercel.json`：`pnpm install` + `pnpm next build`） |
+| 区域 | `iad1`（见 `vercel.json`） |
+
+### 12.1 已完成的上线步骤
+
+1. 推送代码到 GitHub `main`
+2. 安装 **Vercel GitHub App**（账号 `deiaqgyv`，授权仓库）
+3. Vercel → **Add New** → Import `deiaqgyv/GoLiveClearance`
+4. 项目名：`go-live-clearance`；构建命令由 `vercel.json` 覆盖为 `pnpm next build`（**不要**用 Coze 的 `scripts/build.sh` / `tsup` 自定义 server）
+5. Deploy → Production Ready
+6. 设置环境变量 `NEXT_PUBLIC_SITE_URL=https://go-live-clearance.vercel.app`（Production + Preview）后 **Redeploy**
+
+### 12.2 验证清单（首发）
+
+- [x] `GET https://go-live-clearance.vercel.app` → 200 HTML
+- [x] `POST /api/scan` `{ "url": "https://example.com" }` → 返回 `clearance` / `findings` / `reportUrl`
+- [ ] 自定义域名 + Search Console（有域名后再做）
+- [ ] 生产限流观察（Hobby 额度）
+
+### 12.3 日常发布
+
+```text
+git push origin main
+  → Vercel Git Integration 自动 Production 部署
+PR 分支
+  → 自动 Preview URL
+```
+
+改了 `NEXT_PUBLIC_*` 后必须 **Redeploy**（构建期内联），仅改服务端密钥一般也建议 Redeploy。
+
+### 12.4 与 Coze / 本地构建的区别
+
+| 场景 | 命令 |
+|------|------|
+| Vercel 生产 | `pnpm install` → `pnpm next build`（见 `vercel.json`） |
+| Coze / 自定义 Node server | `pnpm build` → `scripts/build.sh`（含 `tsup src/server.ts`） |
+| 本地开发 | `pnpm dev` / `pnpm dev:next` |
+
+Vercel 跑的是 Next.js Serverless / Fluid，**不使用** `src/server.ts`。
+
+### 12.5 后续可选
+
+- 绑定自定义域名（Settings → Domains），并把 `NEXT_PUBLIC_SITE_URL` 改成正式域名后 Redeploy
+- 报告持久化：Upstash Redis / Vercel KV（替换内存 Map）
+- GA4：`NEXT_PUBLIC_GA_ID`
+
+---
+
+**参考：** 实现契约见 [TECH_SPEC.md](./TECH_SPEC.md)。
