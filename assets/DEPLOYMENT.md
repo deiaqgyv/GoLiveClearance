@@ -295,7 +295,7 @@ Vercel 跑的是 Next.js Serverless / Fluid，**不使用** `src/server.ts`。
 ### 12.6 域名到手后的绑定清单
 
 **状态（2026-08-06）：** DNS 已生效；`goliveclearance.com` / `www` 均为 **Valid Configuration**；规范主机 **www**；apex `308` → www；`NEXT_PUBLIC_SITE_URL=https://www.goliveclearance.com`。  
-**GSC：** 域名资源 `goliveclearance.com` 已通过 DNS TXT 完成所有权验证（记录请保留）。Sitemap 提交：`https://www.goliveclearance.com/sitemap.xml`。
+**GSC：** 域名资源 `goliveclearance.com` 已通过 DNS TXT 完成所有权验证（记录请保留）。Sitemap `https://www.goliveclearance.com/sitemap.xml` 已提交成功；Google 会定期抓取，状态可在 GSC → 站点地图 查看。
 
 在阿里云万网（控制台 → 域名 → `goliveclearance.com` → 解析设置）添加：
 
