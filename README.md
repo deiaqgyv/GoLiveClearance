@@ -2,7 +2,7 @@
 
 这是一个基于 [Next.js 16](https://nextjs.org) + [shadcn/ui](https://ui.shadcn.com) 的全栈应用项目，由扣子编程 CLI 创建。
 
-**生产环境：** [https://go-live-clearance.vercel.app](https://go-live-clearance.vercel.app) · 部署说明见 [DEPLOYMENT.md](./DEPLOYMENT.md)
+**生产环境：** [https://www.goliveclearance.com](https://www.goliveclearance.com)（过渡期：[vercel.app](https://go-live-clearance.vercel.app)） · 部署说明见 [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## 快速开始
 

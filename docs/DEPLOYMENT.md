@@ -241,7 +241,9 @@ GitHub Actions 示例职责（不必第一天就有）：
 |------|-----|
 | GitHub | https://github.com/deiaqgyv/GoLiveClearance |
 | Vercel 项目 | `go-live-clearance`（Hobby） |
-| 生产域名 | https://go-live-clearance.vercel.app |
+| 生产域名 | https://www.goliveclearance.com（apex `goliveclearance.com` → 308 到 www） |
+| 过渡域名 | https://go-live-clearance.vercel.app |
+| DNS 注册商 | 阿里云万网（HICHINA `dns23/dns24.hichina.com`） |
 | 控制台 | https://vercel.com/22550555-9493s-projects/go-live-clearance |
 | Framework | Next.js（`vercel.json`：`pnpm install` + `pnpm next build`） |
 | 区域 | `iad1`（见 `vercel.json`） |
@@ -292,14 +294,23 @@ Vercel 跑的是 Next.js Serverless / Fluid，**不使用** `src/server.ts`。
 
 ### 12.6 域名到手后的绑定清单
 
-域名购买完成后按序操作（约 10–20 分钟）：
+**状态（2026-08-06）：** 域名已在 Vercel 添加；规范主机为 **www**；apex `308` → www。DNS 尚未在阿里云解析完成前会显示 Invalid Configuration。
 
-1. Vercel → Project → **Settings → Domains** → 添加 apex + `www`
-2. 在注册商按 Vercel 提示加 **A / CNAME**（或 NS 转到 Vercel DNS）
-3. 等 SSL 显示 **Valid**；选一个规范主机并 301 另一边
-4. 更新环境变量：`NEXT_PUBLIC_SITE_URL=https://你的正式域名` → **Redeploy**
-5. [Google Search Console](https://search.google.com/search-console) 添加资源 → 验证 → 提交 `https://你的域名/sitemap.xml`
-6. （可选）GA4 测量 ID 写入 `NEXT_PUBLIC_GA_ID` 后再 Redeploy
+在阿里云万网（控制台 → 域名 → `goliveclearance.com` → 解析设置）添加：
+
+| 类型 | 主机记录 | 记录值 |
+|------|----------|--------|
+| A | `@` | `216.198.79.1` |
+| CNAME | `www` | `fd5c764426f4141f.vercel-dns-017.com` |
+
+说明：阿里云主机记录填 `@` / `www` 即可；CNAME 值一般**不要**带末尾点。TTL 可先用 10 分钟。
+
+完成后：
+
+1. Vercel Domains 点 Refresh，等到 **Valid Configuration** + SSL Valid  
+2. 确认 `NEXT_PUBLIC_SITE_URL=https://www.goliveclearance.com` 已生效（已设）并 Redeploy  
+3. [Google Search Console](https://search.google.com/search-console) 添加 `https://www.goliveclearance.com` → 验证 → 提交 `/sitemap.xml`  
+4. （可选）GA4：`NEXT_PUBLIC_GA_ID` 后再 Redeploy  
 
 当前工具落地页（已进 sitemap）：
 
