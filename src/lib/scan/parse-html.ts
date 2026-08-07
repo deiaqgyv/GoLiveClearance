@@ -172,10 +172,11 @@ export function parseRobotsTxt(content: string): {
         foundDisallow = true;
       }
     } else if (lower.startsWith("allow:") && inGlobalAgent) {
-      // If there's an Allow after Disallow: /, it's not a blanket block
+      // If there's an Allow (including Allow: /) after Disallow: /, it's not a blanket block
       const path = lower.replace("allow:", "").trim();
-      if (path && path !== "/" && foundDisallow) {
+      if (path === "/" && foundDisallow) {
         foundDisallow = false;
+        hasBlanketDisallow = false;
       }
     }
 
