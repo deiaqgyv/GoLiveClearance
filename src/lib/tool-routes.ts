@@ -77,4 +77,30 @@ export const TOOL_ROUTES = [
     title: "OG Image Not Showing",
     priority: 0.8,
   },
+  // Phase 1-A: new single-check tool pages (matrix expansion)
+  {
+    path: "/title-tag-checker",
+    title: "Title Tag Checker",
+    priority: 0.9,
+  },
+  {
+    path: "/canonical-checker",
+    title: "Canonical Tag Checker",
+    priority: 0.9,
+  },
+  {
+    path: "/h1-tag-checker",
+    title: "H1 Tag Checker",
+    priority: 0.9,
+  },
+  {
+    path: "/meta-description-checker",
+    title: "Meta Description Checker",
+    priority: 0.9,
+  },
+  {
+    path: "/favicon-checker",
+    title: "Favicon Checker",
+    priority: 0.9,
+  },
 ] as const;

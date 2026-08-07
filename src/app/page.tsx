@@ -166,6 +166,47 @@ export default function HomePage() {
         </ul>
       </section>
 
+      {/* Single-check tools */}
+      <section className="mt-16" aria-labelledby="tools-heading">
+        <div className="mb-8">
+          <p className="field-label">Tools</p>
+          <h2
+            id="tools-heading"
+            className="mt-2 font-display text-2xl font-bold tracking-tight text-[var(--pass-ink)] sm:text-3xl"
+          >
+            Single-check tools
+          </h2>
+          <p className="mt-3 text-sm leading-relaxed text-[var(--pass-mute)]">
+            Need to verify one thing fast? Each tool focuses on a single
+            check — or paste your URL above for the full 17-point clearance.
+          </p>
+        </div>
+        <div className="grid gap-px border border-[var(--pass-line)] bg-[var(--pass-line)] sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            { href: "/title-tag-checker", label: "Title Tag Checker" },
+            { href: "/meta-description-checker", label: "Meta Description Checker" },
+            { href: "/h1-tag-checker", label: "H1 Tag Checker" },
+            { href: "/canonical-checker", label: "Canonical Tag Checker" },
+            { href: "/favicon-checker", label: "Favicon Checker" },
+            { href: "/robots-txt-checker", label: "robots.txt Checker" },
+            { href: "/security-headers-checker", label: "Security Headers Checker" },
+            { href: "/ssl-https-checker", label: "SSL / HTTPS Checker" },
+            { href: "/open-graph-checker", label: "Open Graph Checker" },
+            { href: "/noindex-checker", label: "Noindex Checker" },
+            { href: "/sitemap-checker", label: "Sitemap Checker" },
+            { href: "/website-launch-checklist", label: "Website Launch Checklist" },
+          ].map((tool) => (
+            <Link
+              key={tool.href}
+              href={tool.href}
+              className="bg-white px-5 py-4 text-sm font-medium text-[var(--pass-ink)] transition-colors hover:bg-[var(--gate-surface)]"
+            >
+              {tool.label}
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* Guides + CTA */}
       <section className="mt-16 text-center">
         <p className="field-label">Guides</p>
