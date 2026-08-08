@@ -110,7 +110,7 @@ export default function HomePage() {
             {
               n: "02",
               title: "We run the gate",
-              body: "Crawlability, meta, trust signals, and launch accidents in ~30s.",
+              body: "Crawlability, meta, trust signals, and launch accidents — usually in under 10 seconds.",
             },
             {
               n: "03",

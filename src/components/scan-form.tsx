@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
 interface ScanFormProps {
@@ -9,6 +9,16 @@ interface ScanFormProps {
   /** Prefill destination (overrides ?url= when set) */
   defaultUrl?: string;
   className?: string;
+}
+
+type AnalyticsParams = Record<string, string | number | boolean>;
+
+function trackEvent(name: string, params: AnalyticsParams = {}) {
+  const analyticsWindow = window as typeof window & {
+    gtag?: (command: "event", eventName: string, eventParams?: AnalyticsParams) => void;
+  };
+
+  analyticsWindow.gtag?.("event", name, params);
 }
 
 export function ScanForm({
@@ -21,6 +31,8 @@ export function ScanForm({
   const [url, setUrl] = useState(defaultUrl ?? "");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const hasFocusedRef = useRef(false);
+  const hasStartedRef = useRef(false);
 
   useEffect(() => {
     if (defaultUrl) return;
@@ -35,6 +47,8 @@ export function ScanForm({
 
       setLoading(true);
       setError(null);
+      const startedAt = Date.now();
+      trackEvent("scan_submit", { form_variant: variant });
 
       try {
         const res = await fetch("/api/scan", {
@@ -46,6 +60,11 @@ export function ScanForm({
         const data = await res.json();
 
         if (!res.ok) {
+          trackEvent("scan_error", {
+            form_variant: variant,
+            error_code: data.error?.code || "unknown_error",
+            duration_ms: Date.now() - startedAt,
+          });
           setError(data.error?.message || "Scan failed");
           setLoading(false);
           return;
@@ -53,16 +72,41 @@ export function ScanForm({
 
         const id = data.id as string;
         const token = data.reportToken as string | undefined;
+        trackEvent("scan_success", {
+          form_variant: variant,
+          duration_ms: Date.now() - startedAt,
+        });
         const href = token
           ? `/report/${id}?t=${encodeURIComponent(token)}`
           : `/report/${id}`;
         router.push(href);
       } catch {
+        trackEvent("scan_error", {
+          form_variant: variant,
+          error_code: "network_error",
+          duration_ms: Date.now() - startedAt,
+        });
         setError("Network error. Please try again.");
         setLoading(false);
       }
     },
-    [url, loading, router]
+    [url, loading, router, variant]
+  );
+
+  const handleFocus = useCallback(() => {
+    if (hasFocusedRef.current) return;
+    hasFocusedRef.current = true;
+    trackEvent("scan_input_focus", { form_variant: variant });
+  }, [variant]);
+
+  const handleUrlChange = useCallback(
+    (value: string) => {
+      setUrl(value);
+      if (!value.trim() || hasStartedRef.current) return;
+      hasStartedRef.current = true;
+      trackEvent("scan_input_started", { form_variant: variant });
+    },
+    [variant]
   );
 
   if (variant === "compact") {
@@ -84,23 +128,25 @@ export function ScanForm({
                 id="scan-url-compact"
                 type="text"
                 value={url}
-                onChange={(e) => setUrl(e.target.value)}
+                onChange={(e) => handleUrlChange(e.target.value)}
+                onFocus={handleFocus}
                 placeholder="yourdomain.com"
-                className="w-full bg-transparent font-display text-base font-medium tracking-tight text-[var(--pass-ink)] outline-none placeholder:text-[var(--pass-line)]"
+                className="w-full bg-transparent font-display text-base font-medium tracking-tight text-[var(--pass-ink)] outline-none placeholder:text-[var(--pass-mute)]"
                 disabled={loading}
                 autoComplete="url"
+                required
               />
             </div>
             <button
               type="submit"
-              disabled={loading || !url.trim()}
+              disabled={loading}
               className="shrink-0 border border-[var(--pass-ink)] bg-[var(--pass-ink)] px-5 py-2.5 font-mono text-xs font-bold uppercase tracking-[0.14em] text-white disabled:cursor-not-allowed disabled:opacity-40"
             >
               {loading ? "Inspecting…" : "Inspect →"}
             </button>
           </div>
           <p className="mt-3 font-mono text-[10px] text-[var(--pass-mute)]">
-            Public URLs only · ~30s · Opens full report
+            Public URLs only · Usually under 10s · Opens full report
           </p>
         </form>
         {error && (
@@ -123,16 +169,17 @@ export function ScanForm({
             <div>
               <p className="field-label mb-4">Boarding · Pre-launch</p>
               <h1 className="font-display text-4xl font-bold leading-[0.95] tracking-tight text-[var(--pass-ink)] sm:text-5xl md:text-[3.25rem]">
-                Go-Live
+                Check your site
                 <br />
-                Clearance
+                before you ship
               </h1>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--pass-mute)]">
-                Paste your production URL. Get a{" "}
+                Catch noindex, robots.txt, HTTPS, metadata, and launch mistakes.
+                Get a{" "}
                 <span className="font-medium text-[var(--pass-ink)]">
                   CLEARED / HOLD / DENIED
                 </span>{" "}
-                stamp — then fix the three things that matter.
+                decision with the three fixes that matter most.
               </p>
             </div>
             <div className="flex items-end justify-between gap-4 border-t border-dashed border-[var(--pass-line)] pt-5">
@@ -195,7 +242,7 @@ export function ScanForm({
               <label htmlFor="dest-url" className="field-label">
                 Destination
               </label>
-              <div className="mt-2 flex items-center border-b-2 border-[var(--pass-ink)] pb-2">
+              <div className="mt-2 flex min-h-12 items-center border-2 border-[var(--pass-ink)] bg-white px-3 transition-shadow focus-within:shadow-[0_0_0_3px_rgba(15,18,24,0.14)]">
                 <span className="mr-2 shrink-0 font-mono text-xs text-[var(--pass-mute)]">
                   https://
                 </span>
@@ -203,23 +250,25 @@ export function ScanForm({
                   id="dest-url"
                   type="text"
                   value={url}
-                  onChange={(e) => setUrl(e.target.value)}
+                  onChange={(e) => handleUrlChange(e.target.value)}
+                  onFocus={handleFocus}
                   placeholder="yourdomain.com"
-                  className="w-full bg-transparent font-display text-lg font-medium tracking-tight text-[var(--pass-ink)] outline-none placeholder:text-[var(--pass-line)]"
+                  className="min-w-0 flex-1 bg-transparent font-display text-lg font-medium tracking-tight text-[var(--pass-ink)] outline-none placeholder:text-[var(--pass-mute)]"
                   disabled={loading}
                   autoComplete="url"
+                  required
                 />
               </div>
             </div>
 
             <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="font-mono text-[10px] leading-relaxed tracking-wide text-[var(--pass-mute)]">
-                Public URLs only · ~30s · No signup
+                17 launch checks · Usually under 10s · No signup
               </p>
               <button
                 type="submit"
-                disabled={loading || !url.trim()}
-                className="inline-flex items-center justify-center border border-[var(--pass-ink)] bg-[var(--pass-ink)] px-6 py-3 font-mono text-xs font-bold uppercase tracking-[0.16em] text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40"
+                disabled={loading}
+                className="inline-flex min-h-11 items-center justify-center border border-[var(--pass-ink)] bg-[var(--pass-ink)] px-6 py-3 font-mono text-xs font-bold uppercase tracking-[0.16em] text-white transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {loading ? "Inspecting…" : "Get clearance →"}
               </button>
