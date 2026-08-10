@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/nextjs-launch-checklist", {
   title: "Next.js Launch Checklist — App Router Go-Live Fixes",
   description:
     "Next.js launch checklist for indie teams: metadata, robots.ts, sitemap.ts, security headers, OG images. Scan your deployed URL and get CLEARED / HOLD / DENIED with copy-paste fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Local works, preview works, production still breaks. Scan the live URL and paste the fixes.",
     type: "website",
   },
-};
+});
 
 export default function NextjsLaunchChecklistPage() {
   return (

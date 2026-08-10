@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/robots-txt-checker", {
   title: "robots.txt Checker — Catch Disallow:/ Before You Launch",
   description:
     "Free robots.txt checker for go-live: paste your URL, detect Disallow:/ and missing sitemap lines, get a CLEARED / HOLD / DENIED stamp with copy-paste fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Staging leftovers like Disallow:/ kill indexing. Scan before you promote.",
     type: "website",
   },
-};
+});
 
 export default function RobotsTxtCheckerPage() {
   return (

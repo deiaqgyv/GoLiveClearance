@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/disallow-all-robots-txt", {
   title: "Disallow: / in robots.txt — The Silent Index Killer",
   description:
     "Disallow: / in robots.txt blocks all search engines. Detect it on your production site, get copy-paste fixes for Next.js robots.ts and static robots.txt.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Your site is live but Google cannot crawl it. Scan now and fix the most common launch accident.",
     type: "website",
   },
-};
+});
 
 export default function DisallowAllRobotsTxtPage() {
   return (

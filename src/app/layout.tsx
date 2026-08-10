@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: {
@@ -22,14 +23,15 @@ export const metadata: Metadata = {
     "launch checklist",
   ],
   authors: [{ name: "Go-Live Clearance" }],
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://www.goliveclearance.com"
-  ),
+  // Always www — apex URLs 308 and show as "Page with redirect" in GSC
+  metadataBase: new URL(SITE.domain),
+  alternates: { canonical: "/" },
   openGraph: {
     title: "Go-Live Site Clearance",
     description:
       "Paste URL → 30s clearance stamp. Ship with confidence or fix before launch.",
     type: "website",
+    url: "/",
   },
   robots: {
     index: true,

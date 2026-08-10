@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/sitemap-checker", {
   title: "Sitemap Checker — Verify XML Sitemap Before Launch",
   description:
     "Free sitemap checker: paste your URL, verify sitemap.xml exists, is reachable, and lists valid URLs. Get CLEARED / HOLD / DENIED with Next.js sitemap fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Missing or broken sitemap slows indexing on launch day. Scan your URL and catch it early.",
     type: "website",
   },
-};
+});
 
 export default function SitemapCheckerPage() {
   return (

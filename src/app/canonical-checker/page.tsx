@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/canonical-checker", {
   title: "Canonical Tag Checker — Verify rel=canonical Before Google Indexes",
   description:
     "Free canonical tag checker: paste your URL, verify <link rel=canonical> exists and points to the right production URL. Get CLEARED / HOLD / DENIED with copy-paste fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. Catch missing or misconfigured canonical tags that split SEO value across URL variants.",
     type: "website",
   },
-};
+});
 
 export default function CanonicalCheckerPage() {
   return (

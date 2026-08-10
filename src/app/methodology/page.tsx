@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/methodology", {
   title: 'Methodology',
   description: 'How Go-Live Clearance evaluates your site. The inspection criteria and severity definitions.',
-};
+});
 
 export default function MethodologyPage() {
   return (

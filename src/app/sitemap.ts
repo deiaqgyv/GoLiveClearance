@@ -3,11 +3,12 @@ import { SITE } from "@/lib/site";
 import { TOOL_ROUTES } from "@/lib/tool-routes";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // SITE.domain is normalized to www; never list apex URLs (they 308 → www).
   const base = SITE.domain.replace(/\/$/, "");
   const now = new Date();
 
   return [
-    { url: base, lastModified: now, changeFrequency: "weekly", priority: 1 },
+    { url: `${base}/`, lastModified: now, changeFrequency: "weekly", priority: 1 },
     ...TOOL_ROUTES.map((t) => ({
       url: `${base}${t.path}`,
       lastModified: now,

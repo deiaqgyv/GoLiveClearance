@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/vercel-go-live-checklist", {
   title: "Vercel Go-Live Checklist — Deploy, Domain & Launch Fixes",
   description:
     "Vercel go-live checklist: custom domain, HTTPS, NEXT_PUBLIC_SITE_URL, preview vs production, and a live CLEARED / HOLD / DENIED scan.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Everything to check before you share a Vercel-deployed site on launch day.",
     type: "website",
   },
-};
+});
 
 export default function VercelGoLiveChecklistPage() {
   return (

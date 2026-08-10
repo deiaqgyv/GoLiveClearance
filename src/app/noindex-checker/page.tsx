@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/noindex-checker", {
   title: "Noindex Checker — Catch noindex Tags Before You Launch",
   description:
     "Free noindex checker: paste your URL, detect meta robots noindex and X-Robots-Tag headers. Get CLEARED / HOLD / DENIED with copy-paste Next.js fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Staging noindex is the #1 silent launch killer. Scan your production URL and catch it before Google does.",
     type: "website",
   },
-};
+});
 
 export default function NoindexCheckerPage() {
   return (

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/missing-security-headers-nextjs", {
   title: "Missing Security Headers in Next.js — Fix Before Launch",
   description:
     "Missing security headers in Next.js? HSTS, CSP, X-Frame-Options, X-Content-Type-Options — scan your deployed URL and get copy-paste next.config fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Vercel does not add security headers by default. Scan now and fix with one next.config.js snippet.",
     type: "website",
   },
-};
+});
 
 export default function MissingSecurityHeadersNextjsPage() {
   return (

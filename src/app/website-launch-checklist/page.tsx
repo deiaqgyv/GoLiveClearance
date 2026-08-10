@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ScanForm } from "@/components/scan-form";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/website-launch-checklist", {
   title: "Website Launch Checklist — Free Pre-Launch Clearance",
   description:
     "The website launch checklist indie makers actually use: paste your URL, get CLEARED / HOLD / DENIED, and fix the blockers before Product Hunt or ads go live.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
       "Paste your production URL. Get a go-live clearance stamp — not another vanity SEO score.",
     type: "website",
   },
-};
+});
 
 const FAILURES = [
   {

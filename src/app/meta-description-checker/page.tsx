@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/meta-description-checker", {
   title: "Meta Description Checker — Verify Length & SERP Visibility",
   description:
     "Free meta description checker: paste your URL, verify description length (50-160 chars), detect missing or truncated descriptions. Get CLEARED / HOLD / DENIED with copy-paste fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. Catch missing, too short, or truncated meta descriptions that hurt SERP click-through.",
     type: "website",
   },
-};
+});
 
 export default function MetaDescriptionCheckerPage() {
   return (

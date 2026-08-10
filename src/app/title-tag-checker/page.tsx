@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/title-tag-checker", {
   title: "Title Tag Checker — Check Length & SERP Truncation Before Launch",
   description:
     "Free title tag checker: paste your URL, verify <title> length, detect missing or truncated titles. Get CLEARED / HOLD / DENIED with copy-paste Next.js and HTML fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. Catch missing, too short, or truncated title tags before you promote.",
     type: "website",
   },
-};
+});
 
 export default function TitleTagCheckerPage() {
   return (

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/favicon-checker", {
   title: "Favicon Checker — Verify Browser Tab Icon Before Launch",
   description:
     "Free favicon checker: paste your URL, verify favicon exists and loads correctly. Detect missing favicons, broken icon links, and apple-touch-icon gaps. CLEARED / HOLD / DENIED.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. Catch missing or broken favicons that make your site look unfinished in browser tabs and bookmarks.",
     type: "website",
   },
-};
+});
 
 export default function FaviconCheckerPage() {
   return (

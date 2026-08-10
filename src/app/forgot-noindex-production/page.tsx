@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/forgot-noindex-production", {
   title: "Forgot noindex in Production — Fix Staging Leftovers Before Google Does",
   description:
     "Forgot noindex in production? Detect meta robots noindex and X-Robots-Tag headers on your live site. Scan now and get CLEARED / HOLD / DENIED with exact fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "The #1 silent launch killer. Your site is live but Google cannot index it. Scan and fix now.",
     type: "website",
   },
-};
+});
 
 export default function ForgotNoindexProductionPage() {
   return (

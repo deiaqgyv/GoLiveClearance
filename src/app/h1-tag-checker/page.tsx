@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/h1-tag-checker", {
   title: "H1 Tag Checker — Verify Heading Structure Before Launch",
   description:
     "Free H1 tag checker: paste your URL, detect missing or multiple <h1> tags, verify semantic heading structure. Get CLEARED / HOLD / DENIED with copy-paste fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. Catch missing or broken H1 tags that confuse search engines and hurt accessibility.",
     type: "website",
   },
-};
+});
 
 export default function H1TagCheckerPage() {
   return (

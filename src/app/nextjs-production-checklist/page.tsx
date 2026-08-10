@@ -1,9 +1,10 @@
 import { Suspense } from "react";
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ScanForm } from "@/components/scan-form";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/nextjs-production-checklist", {
   title: "Next.js Production Checklist — App Router Go-Live Clearance",
   description:
     "Next.js production checklist for indie teams on Vercel: metadata, robots.ts, sitemap.ts, security headers, and a live CLEARED / HOLD / DENIED scan.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
       "Paste your deployed URL. Get Next.js-ready fixes for robots, metadata, headers, and launch blockers.",
     type: "website",
   },
-};
+});
 
 const NEXT_FIXES = [
   {

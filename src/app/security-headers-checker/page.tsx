@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/security-headers-checker", {
   title: "Security Headers Checker — HSTS, CSP, XFO Before Ship",
   description:
     "Free security headers checker for launch day: HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy. Get CLEARED / HOLD / DENIED with Next.js header fixes.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. See missing HSTS/CSP/XFO and copy next.config headers().",
     type: "website",
   },
-};
+});
 
 export default function SecurityHeadersCheckerPage() {
   return (

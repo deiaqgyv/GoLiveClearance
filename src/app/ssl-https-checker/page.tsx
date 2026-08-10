@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata("/ssl-https-checker", {
   title: "SSL / HTTPS Checker — Redirect & Certificate Before Launch",
   description:
     "Free SSL and HTTPS checker: confirm HTTP→HTTPS redirect and certificate health before Product Hunt or ads. CLEARED / HOLD / DENIED with fix guidance.",
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
       "Paste your URL. Catch missing HTTPS redirects and certificate issues before you promote.",
     type: "website",
   },
-};
+});
 
 export default function SslHttpsCheckerPage() {
   return (
