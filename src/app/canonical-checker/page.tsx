@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/canonical-checker", {
 export default function CanonicalCheckerPage() {
   return (
     <ToolLanding
+      focus="canonical"
       eyebrow="On-page SEO · Canonical URL"
       title="Canonical Tag Checker"
       lead={

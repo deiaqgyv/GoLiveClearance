@@ -36,7 +36,9 @@ export async function generateMetadata({
         : "DENIED";
 
   return {
-    title: `${stamp} — ${report.result.urlInput}`,
+    title: report.result.focusLabel
+      ? `${report.result.focusLabel}: ${stamp} — ${report.result.urlInput}`
+      : `${stamp} — ${report.result.urlInput}`,
     robots: {
       index: false,
       follow: false,
@@ -93,6 +95,22 @@ export default async function ReportPage({ params, searchParams }: Props) {
       </nav>
 
       <article className="overflow-hidden border border-[var(--pass-line)] bg-white">
+        {result.focusLabel ? (
+          <div className="flex flex-col justify-between gap-3 border-b border-[var(--pass-line)] bg-[var(--gate-surface)] px-5 py-4 sm:flex-row sm:items-center sm:px-8">
+            <div>
+              <p className="field-label">Focused report</p>
+              <p className="mt-1 text-sm font-semibold text-[var(--pass-ink)]">
+                {result.focusLabel} · one targeted launch check
+              </p>
+            </div>
+            <Link
+              href={`/?url=${encodeURIComponent(result.urlFinal)}`}
+              className="font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-amber-800 hover:underline"
+            >
+              Run full clearance →
+            </Link>
+          </div>
+        ) : null}
         <div className="border-b border-dashed border-[var(--pass-line)] px-5 py-4 sm:px-8">
           <div className="flex flex-wrap items-start justify-between gap-3">
             <div className="min-w-0">
@@ -194,7 +212,12 @@ export default async function ReportPage({ params, searchParams }: Props) {
             <div className="h-28 border border-[var(--pass-line)] bg-white" />
           }
         >
-          <ScanForm variant="compact" defaultUrl={result.urlInput} />
+          <ScanForm
+            variant="compact"
+            defaultUrl={result.urlInput}
+            focus={result.focus}
+            focusLabel={result.focusLabel}
+          />
         </Suspense>
       </section>
     </div>

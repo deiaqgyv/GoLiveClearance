@@ -24,6 +24,19 @@ export type CheckId =
   | "placeholder_copy"
   | "platform_fingerprint";
 
+export type ScanFocus =
+  | "title"
+  | "description"
+  | "h1"
+  | "canonical"
+  | "noindex"
+  | "robots_txt"
+  | "sitemap"
+  | "favicon"
+  | "open_graph"
+  | "https_redirect"
+  | "security_headers";
+
 export type StackHint = "nextjs" | "vercel" | "stripe" | "auth" | "generic";
 
 export type Platform = "vercel" | "cloudflare" | "netlify" | "unknown";
@@ -53,7 +66,7 @@ export interface Finding {
 export interface ScanRequest {
   url: string;
   stack?: StackHint[];
-  focus?: CheckId;
+  focus?: ScanFocus;
 }
 
 export interface ScanResult {
@@ -65,6 +78,9 @@ export interface ScanResult {
   scannedAt: string;      // ISO
   expiresAt: string;      // ISO, default +7d
   platform?: Platform;
+  /** Present when a tool page requested a single-check report. */
+  focus?: ScanFocus;
+  focusLabel?: string;
   findings: Finding[];    // sorted: blocker → warning → pass
   priorityFixIds: string[]; // max 3, for "Fix these first"
   meta: {

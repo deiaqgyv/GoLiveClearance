@@ -11,4 +11,5 @@ export {
 export { getFix, getFixes, attachFixes, FIX_STACK_LABEL } from "./fixes";
 export type { FixStack } from "./types";
 export { computeScore, computeClearance, getPriorityFixIds } from "./score";
+export { applyScanFocus, isScanFocus, FOCUS_DEFINITIONS } from "./focus";
 export type * from "./types";

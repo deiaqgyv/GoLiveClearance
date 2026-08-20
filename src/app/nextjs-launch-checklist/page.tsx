@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/nextjs-launch-checklist", {
 export default function NextjsLaunchChecklistPage() {
   return (
     <ToolLanding
+      category={{ label: "Launch checklists", href: "/launch-checklists" }}
       eyebrow="Next.js · App Router · launch day"
       title="Next.js Launch Checklist"
       lead={

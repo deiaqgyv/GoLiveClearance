@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/robots-txt-checker", {
 export default function RobotsTxtCheckerPage() {
   return (
     <ToolLanding
+      focus="robots_txt"
       eyebrow="Indexability · robots.txt"
       title="robots.txt Checker"
       lead={

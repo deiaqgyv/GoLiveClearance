@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/favicon-checker", {
 export default function FaviconCheckerPage() {
   return (
     <ToolLanding
+      focus="favicon"
       eyebrow="Visual completeness · Favicon"
       title="Favicon Checker"
       lead={

@@ -17,6 +17,8 @@ export const metadata: Metadata = pageMetadata("/security-headers-checker", {
 export default function SecurityHeadersCheckerPage() {
   return (
     <ToolLanding
+      focus="security_headers"
+      category={{ label: "Security", href: "/security" }}
       eyebrow="Hardening · response headers"
       title="Security Headers Checker"
       lead={

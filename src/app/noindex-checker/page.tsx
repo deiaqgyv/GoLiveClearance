@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/noindex-checker", {
 export default function NoindexCheckerPage() {
   return (
     <ToolLanding
+      focus="noindex"
       eyebrow="Indexability · noindex"
       title="Noindex Checker"
       lead={

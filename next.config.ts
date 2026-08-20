@@ -13,6 +13,15 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/nextjs-launch-checklist",
+        destination: "/nextjs-production-checklist",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

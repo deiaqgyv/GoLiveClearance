@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ScanForm } from "@/components/scan-form";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = pageMetadata("/website-launch-checklist", {
   title: "Website Launch Checklist — Free Pre-Launch Clearance",
@@ -55,6 +56,7 @@ const MANUAL = [
 export default function WebsiteLaunchChecklistPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-20 pt-10 md:pt-14">
+      <Breadcrumbs current="Website Launch Checklist" parent={{ label: "Launch checklists", href: "/launch-checklists" }} />
       <p className="field-label mb-3 text-[var(--hold-amber)]">
         Launch checklist + live scanner
       </p>

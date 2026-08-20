@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/missing-security-headers-nextjs
 export default function MissingSecurityHeadersNextjsPage() {
   return (
     <ToolLanding
+      category={{ label: "Security", href: "/security" }}
       eyebrow="Next.js · security headers · hardening"
       title="Missing Security Headers in Next.js"
       lead={

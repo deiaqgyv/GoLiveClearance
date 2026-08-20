@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/sitemap-checker", {
 export default function SitemapCheckerPage() {
   return (
     <ToolLanding
+      focus="sitemap"
       eyebrow="Discovery · sitemap.xml"
       title="Sitemap Checker"
       lead={

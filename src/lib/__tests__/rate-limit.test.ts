@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import {
   acquireScanSlot,
   releaseScanSlot,
@@ -9,25 +9,25 @@ import {
 
 // Force rate limiting on for tests
 beforeEach(() => {
-  process.env.NODE_ENV = "production";
-  process.env.RATE_LIMIT_DISABLED = "0";
+  vi.stubEnv("NODE_ENV", "production");
+  vi.stubEnv("RATE_LIMIT_DISABLED", "0");
 });
 
 describe("isRateLimitDisabled", () => {
   it("returns true when RATE_LIMIT_DISABLED=1", () => {
-    process.env.RATE_LIMIT_DISABLED = "1";
+    vi.stubEnv("RATE_LIMIT_DISABLED", "1");
     expect(isRateLimitDisabled()).toBe(true);
   });
 
   it("returns true in development", () => {
-    process.env.NODE_ENV = "development";
-    process.env.RATE_LIMIT_DISABLED = "0";
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("RATE_LIMIT_DISABLED", "0");
     expect(isRateLimitDisabled()).toBe(true);
   });
 
   it("returns false in production without override", () => {
-    process.env.NODE_ENV = "production";
-    process.env.RATE_LIMIT_DISABLED = "0";
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("RATE_LIMIT_DISABLED", "0");
     expect(isRateLimitDisabled()).toBe(false);
   });
 });

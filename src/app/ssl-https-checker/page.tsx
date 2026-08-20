@@ -17,6 +17,8 @@ export const metadata: Metadata = pageMetadata("/ssl-https-checker", {
 export default function SslHttpsCheckerPage() {
   return (
     <ToolLanding
+      focus="https_redirect"
+      category={{ label: "Security", href: "/security" }}
       eyebrow="Transport · TLS"
       title="SSL / HTTPS Checker"
       lead={

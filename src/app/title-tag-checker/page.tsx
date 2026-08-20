@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/title-tag-checker", {
 export default function TitleTagCheckerPage() {
   return (
     <ToolLanding
+      focus="title"
       eyebrow="On-page SEO · Title tag"
       title="Title Tag Checker"
       lead={

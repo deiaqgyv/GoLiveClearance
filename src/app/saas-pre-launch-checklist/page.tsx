@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/saas-pre-launch-checklist", {
 export default function SaasPreLaunchChecklistPage() {
   return (
     <ToolLanding
+      category={{ label: "Launch checklists", href: "/launch-checklists" }}
       eyebrow="SaaS · pre-launch · indie teams"
       title="SaaS Pre-Launch Checklist"
       lead={

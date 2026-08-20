@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { GoogleAnalytics } from "@/components/google-analytics";
+import { Footer } from "@/components/footer";
 import { SITE } from "@/lib/site";
+import { JsonLd } from "@/components/json-ld";
 
 export const metadata: Metadata = {
   title: {
@@ -32,6 +34,14 @@ export const metadata: Metadata = {
       "Paste URL → 30s clearance stamp. Ship with confidence or fix before launch.",
     type: "website",
     url: "/",
+    siteName: SITE.name,
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Go-Live Clearance pre-launch inspection" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Go-Live Site Clearance",
+    description: "Paste URL → 30s clearance stamp. Ship with confidence or fix before launch.",
+    images: ["/opengraph-image"],
   },
   robots: {
     index: true,
@@ -47,9 +57,40 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="font-sans antialiased text-[var(--foreground)]">
+        <JsonLd
+          data={[
+            {
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              "@id": `${SITE.domain}/#organization`,
+              name: SITE.name,
+              url: SITE.domain,
+              email: "huhl22550555@163.com",
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": `${SITE.domain}/#website`,
+              name: SITE.name,
+              url: SITE.domain,
+              publisher: { "@id": `${SITE.domain}/#organization` },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: SITE.name,
+              url: SITE.domain,
+              applicationCategory: "DeveloperApplication",
+              operatingSystem: "Any",
+              description: metadata.description,
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+            },
+          ]}
+        />
         <GoogleAnalytics />
         <Header />
         <main>{children}</main>
+        <Footer />
       </body>
     </html>
   );

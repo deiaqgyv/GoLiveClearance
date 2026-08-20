@@ -17,6 +17,12 @@ export function Header() {
         </Link>
         <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1">
           <Link
+            href="/seo-checkers"
+            className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
+          >
+            Tools
+          </Link>
+          <Link
             href="/robots-txt-checker"
             className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
           >

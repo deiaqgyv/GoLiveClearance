@@ -7,4 +7,5 @@ export type {
   ScanResult,
   ScanResponse,
   Platform,
+  ScanFocus,
 } from "@/lib/scan/types";

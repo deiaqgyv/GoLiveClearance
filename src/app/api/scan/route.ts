@@ -10,6 +10,7 @@ import {
   setCachedResult,
 } from "@/lib/rate-limit";
 import type { ScanResult } from "@/lib/scan/types";
+import { applyScanFocus, isScanFocus } from "@/lib/scan/focus";
 
 // ─── URL normalization (TECH_SPEC §4) ───────────────────────────────────
 function normalizeUrl(raw: string): {
@@ -93,7 +94,7 @@ function errorResponse(
 // ─── POST /api/scan ─────────────────────────────────────────────────────
 export async function POST(request: NextRequest): Promise<NextResponse> {
   // Parse body
-  let body: { url?: string };
+  let body: { url?: string; focus?: unknown };
   try {
     body = await request.json();
   } catch {
@@ -104,6 +105,10 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   if (!rawUrl || typeof rawUrl !== "string") {
     return errorResponse("invalid_url", "Missing or invalid 'url' field", 400);
   }
+  if (body.focus !== undefined && !isScanFocus(body.focus)) {
+    return errorResponse("invalid_url", "Invalid scan focus", 400);
+  }
+  const focus = body.focus;
 
   // Normalize URL
   const { url, error } = normalizeUrl(rawUrl);
@@ -129,13 +134,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
   // Cache hit: reuse result, do not consume rate-limit quota
   const cached = getCachedResult(url.toString(), ip) as ScanResult | null;
   if (cached) {
-    const { id, expiresAt, token } = saveReport(cached);
+    const reportResult = focus ? applyScanFocus(cached, focus) : cached;
+    const { id, expiresAt, token } = saveReport(reportResult);
     const domain = request.headers.get("host") || "localhost:3000";
     const protocol = request.headers.get("x-forwarded-proto") || "http";
     const reportUrl = `${protocol}://${domain}/report/${id}?t=${encodeURIComponent(token)}`;
 
     return NextResponse.json({
-      ...cached,
+      ...reportResult,
       id,
       reportId: id,
       reportUrl,
@@ -181,13 +187,14 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
 
     setCachedResult(url.toString(), ip, result);
 
-    const { id, expiresAt, token } = saveReport(result);
+    const reportResult = focus ? applyScanFocus(result, focus) : result;
+    const { id, expiresAt, token } = saveReport(reportResult);
     const domain = request.headers.get("host") || "localhost:3000";
     const protocol = request.headers.get("x-forwarded-proto") || "http";
     const reportUrl = `${protocol}://${domain}/report/${id}?t=${encodeURIComponent(token)}`;
 
     return NextResponse.json({
-      ...result,
+      ...reportResult,
       id,
       reportId: id,
       reportUrl,

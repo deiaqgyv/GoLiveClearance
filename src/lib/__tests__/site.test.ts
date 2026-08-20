@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { normalizeSiteDomain } from "@/lib/site";
+import { CANONICAL_ORIGIN, normalizeSiteDomain } from "@/lib/site";
 
 describe("normalizeSiteDomain", () => {
   it("keeps www production host", () => {
@@ -23,5 +23,10 @@ describe("normalizeSiteDomain", () => {
         "https://go-live-clearance.vercel.apphttps://www.goliveclearance.com"
       )
     ).toBe("https://www.goliveclearance.com");
+  });
+
+  it("keeps the production origin as the single source of truth", () => {
+    expect(CANONICAL_ORIGIN).toBe("https://www.goliveclearance.com");
+    expect(normalizeSiteDomain(CANONICAL_ORIGIN)).toBe(CANONICAL_ORIGIN);
   });
 });

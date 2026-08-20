@@ -17,6 +17,8 @@ export const metadata: Metadata = pageMetadata("/open-graph-checker", {
 export default function OpenGraphCheckerPage() {
   return (
     <ToolLanding
+      focus="open_graph"
+      category={{ label: "Social preview", href: "/social-preview" }}
       eyebrow="Social preview · Open Graph"
       title="Open Graph Checker"
       lead={

@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/h1-tag-checker", {
 export default function H1TagCheckerPage() {
   return (
     <ToolLanding
+      focus="h1"
       eyebrow="On-page SEO · Heading structure"
       title="H1 Tag Checker"
       lead={

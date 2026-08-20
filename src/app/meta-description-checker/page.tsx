@@ -5,7 +5,7 @@ import { ToolLanding } from "@/components/tool-landing";
 export const metadata: Metadata = pageMetadata("/meta-description-checker", {
   title: "Meta Description Checker — Verify Length & SERP Visibility",
   description:
-    "Free meta description checker: paste your URL, verify description length (50-160 chars), detect missing or truncated descriptions. Get CLEARED / HOLD / DENIED with copy-paste fixes.",
+    "Free meta description checker: verify description length, detect missing or truncated descriptions, and get a focused result with copy-paste fixes.",
   openGraph: {
     title: "Meta Description Checker",
     description:
@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/meta-description-checker", {
 export default function MetaDescriptionCheckerPage() {
   return (
     <ToolLanding
+      focus="description"
       eyebrow="On-page SEO · Meta description"
       title="Meta Description Checker"
       lead={

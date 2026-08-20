@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/og-image-not-showing", {
 export default function OgImageNotShowingPage() {
   return (
     <ToolLanding
+      category={{ label: "Social preview", href: "/social-preview" }}
       eyebrow="Social preview · OG image broken"
       title="OG Image Not Showing"
       lead={

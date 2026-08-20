@@ -17,6 +17,7 @@ export const metadata: Metadata = pageMetadata("/vercel-go-live-checklist", {
 export default function VercelGoLiveChecklistPage() {
   return (
     <ToolLanding
+      category={{ label: "Launch checklists", href: "/launch-checklists" }}
       eyebrow="Vercel · deployment · go-live"
       title="Vercel Go-Live Checklist"
       lead={

@@ -1,10 +1,11 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
+import { describe, it, expect } from "vitest";
 import {
   normalizeUrl,
   assertSafeUrl,
   validateRedirectTarget,
   checkSSRF,
   SSRFError,
+  isPrivateIP,
 } from "../ssrf";
 
 // ─── normalizeUrl ──────────────────────────────────────────────────────
@@ -103,16 +104,8 @@ describe("SSRF hostname blocking", () => {
 
 // ─── SSRF private IP checks (via DNS mock) ─────────────────────────────
 describe("SSRF private IP blocking", () => {
-  it("blocks 10.x.x.x (Class A private)", async () => {
-    vi.doMock("dns", () => ({
-      promises: { resolve: vi.fn().mockResolvedValue(["10.0.0.1"]) },
-    }));
-    // We test the underlying isPrivateIP via checkSSRF wrapper
-    const { checkSSRF: check } = await import("../ssrf");
-    const url = new URL("http://internal.example.com");
-    const result = await check(url);
-    expect(result.allowed).toBe(false);
-    vi.doUnmock("dns");
+  it("blocks 10.x.x.x (Class A private)", () => {
+    expect(isPrivateIP("10.0.0.1")).toBe(true);
   });
 });
 

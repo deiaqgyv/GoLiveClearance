@@ -127,6 +127,12 @@ const severityConfig: Record<
     badgeColor: "bg-[var(--secondary)] text-[var(--pass-mute)]",
     icon: "i",
   },
+  pass: {
+    label: "PASS",
+    borderColor: "border-l-[var(--clearance-green)]",
+    badgeColor: "bg-[var(--clearance-green-bg)] text-[var(--clearance-green)]",
+    icon: "✓",
+  },
 };
 
 interface FindingCardProps {
@@ -164,7 +170,9 @@ export function FindingCard({ finding, index }: FindingCardProps) {
         {finding.summary}
       </h3>
 
-      <p className="mt-1 text-sm text-[var(--pass-mute)]">{finding.impact}</p>
+      {finding.impact ? (
+        <p className="mt-1 text-sm text-[var(--pass-mute)]">{finding.impact}</p>
+      ) : null}
 
       {finding.evidence && (
         <div className="mt-2 bg-[var(--gate-surface)] px-3 py-2">

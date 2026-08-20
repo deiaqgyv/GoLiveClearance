@@ -1,5 +1,7 @@
 import { Suspense, type ReactNode } from "react";
 import Link from "next/link";
+import { Breadcrumbs } from "@/components/breadcrumbs";
+import type { ScanFocus } from "@/lib/scan/types";
 import { ScanForm } from "@/components/scan-form";
 
 export interface ToolFailure {
@@ -26,6 +28,8 @@ interface ToolLandingProps {
   checklistHeading?: string;
   checklist?: string[];
   related: ToolRelated[];
+  category?: { label: string; href: string };
+  focus?: ScanFocus;
 }
 
 export function ToolLanding({
@@ -41,9 +45,12 @@ export function ToolLanding({
   checklistHeading,
   checklist,
   related,
+  category = { label: "SEO checkers", href: "/seo-checkers" },
+  focus,
 }: ToolLandingProps) {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-20 pt-10 md:pt-14">
+      <Breadcrumbs current={title} parent={category} />
       <p className="field-label mb-3 text-[var(--hold-amber)]">{eyebrow}</p>
       <h1 className="font-display text-3xl font-bold tracking-tight text-[var(--pass-ink)] md:text-4xl">
         {title}
@@ -58,7 +65,7 @@ export function ToolLanding({
             <div className="h-28 border border-[var(--pass-line)] bg-white" />
           }
         >
-          <ScanForm variant="compact" />
+          <ScanForm variant="compact" focus={focus} focusLabel={title} />
         </Suspense>
       </section>
 

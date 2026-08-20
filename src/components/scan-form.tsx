@@ -2,6 +2,7 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import type { ScanFocus } from "@/lib/scan/types";
 
 interface ScanFormProps {
   /** boarding = homepage hero pass; compact = embed on other pages */
@@ -9,6 +10,8 @@ interface ScanFormProps {
   /** Prefill destination (overrides ?url= when set) */
   defaultUrl?: string;
   className?: string;
+  focus?: ScanFocus;
+  focusLabel?: string;
 }
 
 type AnalyticsParams = Record<string, string | number | boolean>;
@@ -25,6 +28,8 @@ export function ScanForm({
   variant = "boarding",
   defaultUrl,
   className = "",
+  focus,
+  focusLabel,
 }: ScanFormProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -48,13 +53,13 @@ export function ScanForm({
       setLoading(true);
       setError(null);
       const startedAt = Date.now();
-      trackEvent("scan_submit", { form_variant: variant });
+      trackEvent("scan_submit", { form_variant: variant, ...(focus ? { scan_focus: focus } : {}) });
 
       try {
         const res = await fetch("/api/scan", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ url: url.trim() }),
+          body: JSON.stringify({ url: url.trim(), ...(focus ? { focus } : {}) }),
         });
 
         const data = await res.json();
@@ -90,7 +95,7 @@ export function ScanForm({
         setLoading(false);
       }
     },
-    [url, loading, router, variant]
+    [url, loading, router, variant, focus]
   );
 
   const handleFocus = useCallback(() => {
@@ -146,7 +151,7 @@ export function ScanForm({
             </button>
           </div>
           <p className="mt-3 font-mono text-[10px] text-[var(--pass-mute)]">
-            Public URLs only · Usually under 10s · Opens full report
+            Public URLs only · Usually under 10s · Opens {focusLabel ? `${focusLabel} report` : "full report"}
           </p>
         </form>
         {error && (

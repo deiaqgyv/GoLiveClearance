@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { pageMetadata } from "@/lib/seo";
 import Link from "next/link";
 import { ScanForm } from "@/components/scan-form";
+import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = pageMetadata("/nextjs-production-checklist", {
   title: "Next.js Production Checklist — App Router Go-Live Clearance",
@@ -72,6 +73,7 @@ const VERCEL = [
 export default function NextjsProductionChecklistPage() {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-20 pt-10 md:pt-14">
+      <Breadcrumbs current="Next.js Production Checklist" parent={{ label: "Launch checklists", href: "/launch-checklists" }} />
       <p className="field-label mb-3 text-[var(--hold-amber)]">
         Next.js · App Router · Vercel
       </p>

@@ -34,8 +34,12 @@ export function normalizeSiteDomain(rawInput: string): string {
 }
 
 function resolveSiteDomain(): string {
+  const fallback =
+    process.env.NODE_ENV === "production"
+      ? CANONICAL_ORIGIN
+      : "http://localhost:3000";
   return normalizeSiteDomain(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
+    process.env.NEXT_PUBLIC_SITE_URL || fallback
   );
 }
 

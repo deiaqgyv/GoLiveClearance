@@ -43,11 +43,6 @@ export const TOOL_ROUTES = [
   },
   // Extended 7 (scenario / narrative pages)
   {
-    path: "/nextjs-launch-checklist",
-    title: "Next.js Launch Checklist",
-    priority: 0.8,
-  },
-  {
     path: "/vercel-go-live-checklist",
     title: "Vercel Go-Live Checklist",
     priority: 0.8,
