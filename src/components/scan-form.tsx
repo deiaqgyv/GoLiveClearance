@@ -151,7 +151,7 @@ export function ScanForm({
             </button>
           </div>
           <p className="mt-3 font-mono text-[10px] text-[var(--pass-mute)]">
-            Public URLs only · Usually under 10s · Opens {focusLabel ? `${focusLabel} report` : "full report"}
+            Public URLs only · Typically within 30s · Opens {focusLabel ? `${focusLabel} report` : "full report"}
           </p>
         </form>
         {error && (
@@ -173,11 +173,14 @@ export function ScanForm({
           <div className="flex flex-col justify-between gap-8 bg-[var(--gate-surface)] px-6 py-8 sm:px-8 sm:py-10">
             <div>
               <p className="field-label mb-4">Boarding · Pre-launch</p>
-              <h1 className="font-display text-4xl font-bold leading-[0.95] tracking-tight text-[var(--pass-ink)] sm:text-5xl md:text-[3.25rem]">
+              <p
+                aria-hidden="true"
+                className="font-display text-4xl font-bold leading-[0.95] tracking-tight text-[var(--pass-ink)] sm:text-5xl md:text-[3.25rem]"
+              >
                 Check your site
                 <br />
                 before you ship
-              </h1>
+              </p>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-[var(--pass-mute)]">
                 Catch noindex, robots.txt, HTTPS, metadata, and launch mistakes.
                 Get a{" "}
@@ -268,7 +271,7 @@ export function ScanForm({
 
             <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="font-mono text-[10px] leading-relaxed tracking-wide text-[var(--pass-mute)]">
-                17 launch checks · Usually under 10s · No signup
+                17 launch checks · Typically within 30s · No signup
               </p>
               <button
                 type="submit"

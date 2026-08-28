@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/h1-tag-checker", {
-  title: "H1 Tag Checker — Verify Heading Structure Before Launch",
+  title: "H1 Tag Checker — Find Missing, Empty, or Multiple H1s",
   description:
-    "Free H1 tag checker: paste your URL, detect missing or multiple <h1> tags, verify semantic heading structure. Get CLEARED / HOLD / DENIED with copy-paste fixes.",
+    "Check a web page for missing, empty, image-only, or multiple H1 tags. Inspect the primary heading before search engines and users reach the page.",
   openGraph: {
     title: "H1 Tag Checker",
     description:
@@ -51,6 +51,11 @@ export default function H1TagCheckerPage() {
           title: "Client-side rendered H1 not in initial HTML",
           detail:
             "If the H1 only appears after JavaScript hydration, crawlers that don't execute JS see an empty page. SSR or SSG solves this.",
+        },
+        {
+          title: "Multiple H1 tags with competing topics",
+          detail:
+            "Modern HTML permits more than one H1, but repeated page-level headings often signal a template problem. Keep one unambiguous primary topic unless the document structure genuinely requires otherwise.",
         },
       ]}
       fixHeading="Copy-paste H1 fixes"

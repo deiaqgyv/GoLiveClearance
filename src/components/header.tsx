@@ -5,12 +5,7 @@ export function Header() {
     <header className="border-b border-[var(--pass-line)] bg-white/90 backdrop-blur-sm">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-3.5">
         <Link href="/" className="group flex shrink-0 items-center gap-2.5">
-          <span
-            className="flex h-8 w-8 items-center justify-center border border-[var(--pass-ink)] bg-[var(--pass-ink)] font-mono text-[10px] font-bold tracking-wider text-white"
-            aria-hidden
-          >
-            GL
-          </span>
+          <img src="/icon.svg" alt="" width="32" height="32" className="h-8 w-8 shrink-0" aria-hidden="true" />
           <span className="font-display text-sm font-semibold tracking-tight text-[var(--pass-ink)] group-hover:opacity-80">
             Go-Live Clearance
           </span>

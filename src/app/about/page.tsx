@@ -43,7 +43,7 @@ export default function AboutPage() {
         </ul>
         <p>
           These mistakes are invisible during development but devastating after launch.
-          Go-Live Clearance catches them in 30 seconds.
+          Go-Live Clearance typically catches them within 30 seconds, depending on the target site&apos;s response time.
         </p>
 
         <h2 className="pt-2 text-xl font-bold text-[var(--foreground)]">

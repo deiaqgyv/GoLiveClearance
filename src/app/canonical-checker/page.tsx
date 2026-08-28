@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/canonical-checker", {
-  title: "Canonical Tag Checker — Verify rel=canonical Before Google Indexes",
+  title: "Canonical Tag Checker — Find Missing or Wrong Canonical URLs",
   description:
-    "Free canonical tag checker: paste your URL, verify <link rel=canonical> exists and points to the right production URL. Get CLEARED / HOLD / DENIED with copy-paste fixes.",
+    "Check a URL for missing, conflicting, relative, redirected, or staging canonical tags. See the declared canonical and get practical fixes before Google indexes it.",
   openGraph: {
     title: "Canonical Tag Checker",
     description:
@@ -33,7 +33,7 @@ export default function CanonicalCheckerPage() {
           CLEARED / HOLD / DENIED.
         </>
       }
-      failuresHeading="Canonical issues we catch"
+      failuresHeading="Missing and incorrect canonical issues we catch"
       failuresLead="These silently dilute SEO value. You won't see an error — just slower ranking and fragmented authority."
       failures={[
         {
@@ -55,6 +55,11 @@ export default function CanonicalCheckerPage() {
           title: "Conflicting canonical and og:url",
           detail:
             "When rel=canonical and og:url point to different URLs, social platforms and search engines disagree on the canonical version."
+        },
+        {
+          title: "Canonical points through a redirect",
+          detail:
+            "A declared canonical should resolve directly to the preferred 200 URL. Redirecting canonicals add ambiguity and make audits harder to interpret.",
         },
       ]}
       fixHeading="Copy-paste canonical fixes"
@@ -90,6 +95,7 @@ export const metadata = {
         "Ensure it never points at preview or staging hosts",
         "Use one canonical per page — don't chain redirects through canonicals",
         "Verify with URL Inspection in Search Console after deploy",
+        "Compare the declared canonical with Google's selected canonical in Search Console",
       ]}
       related={[
         {

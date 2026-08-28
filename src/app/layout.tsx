@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: "%s | Go-Live Clearance",
   },
   description:
-    "Paste your URL. Get a CLEARED / HOLD / DENIED clearance stamp in 30 seconds — with the three fixes that matter before you ship.",
+    "Paste your URL. Typically get a CLEARED / HOLD / DENIED clearance stamp within 30 seconds — with the three fixes that matter before you ship.",
   keywords: [
     "site checker",
     "pre-launch",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Go-Live Site Clearance",
     description:
-      "Paste URL → 30s clearance stamp. Ship with confidence or fix before launch.",
+      "Paste a public URL for a pre-launch clearance report, typically within 30 seconds.",
     type: "website",
     url: "/",
     siteName: SITE.name,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Go-Live Site Clearance",
-    description: "Paste URL → 30s clearance stamp. Ship with confidence or fix before launch.",
+    description: "Paste a public URL for a pre-launch clearance report, typically within 30 seconds.",
     images: ["/opengraph-image"],
   },
   robots: {
@@ -78,11 +78,20 @@ export default function RootLayout({
             {
               "@context": "https://schema.org",
               "@type": "WebApplication",
+              "@id": `${SITE.domain}/#web-application`,
               name: SITE.name,
               url: SITE.domain,
+              provider: { "@id": `${SITE.domain}/#organization` },
               applicationCategory: "DeveloperApplication",
               operatingSystem: "Any",
               description: metadata.description,
+              featureList: [
+                "Crawlability and indexability checks",
+                "Metadata and social preview checks",
+                "TLS and security header checks",
+                "Launch-readiness prioritization",
+                "Shareable clearance reports",
+              ],
               offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
             },
           ]}

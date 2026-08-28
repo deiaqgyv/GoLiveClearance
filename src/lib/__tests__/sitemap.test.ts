@@ -15,8 +15,13 @@ describe("sitemap", () => {
     ]));
   });
 
-  it("does not claim a deploy-time lastmod for every page", () => {
-    expect(sitemap().every((entry) => entry.lastModified === undefined)).toBe(true);
+  it("uses the verified content update date instead of the deploy time", () => {
+    expect(sitemap().every((entry) => entry.lastModified instanceof Date)).toBe(true);
+    expect(new Set(sitemap().map((entry) =>
+      entry.lastModified instanceof Date ? entry.lastModified.toISOString() : entry.lastModified
+    ))).toEqual(
+      new Set(["2026-08-24T00:00:00.000Z"])
+    );
   });
 
   it("does not include redirected legacy pages", () => {

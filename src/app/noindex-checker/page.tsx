@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/noindex-checker", {
-  title: "Noindex Checker — Catch noindex Tags Before You Launch",
+  title: "Noindex Checker — Test Meta Robots and X-Robots-Tag",
   description:
-    "Free noindex checker: paste your URL, detect meta robots noindex and X-Robots-Tag headers. Get CLEARED / HOLD / DENIED with copy-paste Next.js fixes.",
+    "Check a production URL for meta robots noindex and X-Robots-Tag headers. Find accidental indexing blocks and get practical Next.js fixes.",
   openGraph: {
     title: "Noindex Checker",
     description:
@@ -97,7 +97,8 @@ export function middleware(req: NextRequest) {
       ]}
       checklist={[
         "Search site:yourdomain.com in Google after launch to confirm indexing",
-        "Check Search Console Coverage report for 'Indexed, though blocked by robots.txt'",
+        "Use Search Console URL Inspection to confirm indexing is allowed",
+        "Check robots.txt separately: robots blocking and noindex are different directives",
         "Re-scan after removing noindex — it can take days for Google to re-crawl",
       ]}
       related={[

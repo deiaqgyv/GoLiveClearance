@@ -19,6 +19,7 @@ __pycache__/
 .nuxt
 .turbo
 .vercel
+.seo-cache/
 .parcel-cache
 .cache
 coverage
@@ -164,3 +165,4 @@ Desktop.ini
 .coze-logs
 .codegraph/
 .local-docs-backup/
+.env*

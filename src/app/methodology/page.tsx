@@ -16,6 +16,16 @@ export default function MethodologyPage() {
         How we decide CLEARED, HOLD, or DENIED.
       </p>
 
+      <div className="mb-10 border border-[var(--pass-line)] bg-[var(--gate-surface)] p-5 text-sm leading-relaxed">
+        <p className="field-label">Method version · Updated August 24, 2026</p>
+        <p className="mt-3 text-[var(--foreground)]/80">
+          The scanner makes bounded HTTP requests to public URLs, follows at most five redirects,
+          and evaluates the returned HTML, response headers, robots.txt, and sitemap signals. A pass
+          means the tested signal was present at scan time; it is not a guarantee of indexing,
+          security, accessibility, or legal compliance.
+        </p>
+      </div>
+
       <section className="mb-10">
         <h2 className="mb-4 text-xl font-bold">Inspection Criteria</h2>
         <p className="mb-6 text-sm leading-relaxed text-[var(--foreground)]/80">
@@ -210,6 +220,22 @@ export default function MethodologyPage() {
             The score (0-100) is calculated as: <code className="rounded bg-[var(--muted)] px-1.5 py-0.5 font-mono text-xs">100 - (blockers &times; 25) - (warnings &times; 5)</code>
           </p>
         </div>
+      </section>
+
+      <section className="mt-10" aria-labelledby="sources-heading">
+        <h2 id="sources-heading" className="mb-4 text-xl font-bold">Rules and primary references</h2>
+        <p className="mb-4 text-sm leading-relaxed text-[var(--foreground)]/80">
+          Rules are intentionally conservative. Blockers are reserved for conditions that can prevent
+          a public launch or search discovery; warnings identify material quality or defense-in-depth
+          gaps. Results may change when the target deploys new code or returns different content to the scanner.
+        </p>
+        <ul className="ml-5 list-disc space-y-2 text-sm text-[var(--foreground)]/80">
+          <li><a className="underline underline-offset-2" href="https://developers.google.com/search/docs/crawling-indexing/robots/intro" rel="noreferrer">Google Search Central: robots.txt introduction</a></li>
+          <li><a className="underline underline-offset-2" href="https://developers.google.com/search/docs/crawling-indexing/block-indexing" rel="noreferrer">Google Search Central: block indexing with noindex</a></li>
+          <li><a className="underline underline-offset-2" href="https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls" rel="noreferrer">Google Search Central: canonical URLs</a></li>
+          <li><a className="underline underline-offset-2" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security" rel="noreferrer">MDN: Strict-Transport-Security</a></li>
+          <li><a className="underline underline-offset-2" href="https://ogp.me/" rel="noreferrer">Open Graph protocol</a></li>
+        </ul>
       </section>
     </div>
   );

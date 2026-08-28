@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/meta-description-checker", {
-  title: "Meta Description Checker — Verify Length & SERP Visibility",
+  title: "Meta Description Length Checker for Google Search Snippets",
   description:
     "Free meta description checker: verify description length, detect missing or truncated descriptions, and get a focused result with copy-paste fixes.",
   openGraph: {
@@ -60,7 +60,7 @@ export default function MetaDescriptionCheckerPage() {
           title: "Next.js App Router — metadata API",
           code: `export const metadata = {
   description: 'Scan your site before launch. Get a Go/No-Go ' +
-    'clearance report in 30 seconds — HTTPS, headers, ' +
+    'clearance report, typically within 30 seconds — HTTPS, headers, ' +
     'robots.txt, OG tags, and more.',
 }`,
         },

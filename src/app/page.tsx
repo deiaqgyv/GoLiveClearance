@@ -12,6 +12,7 @@ function ScanFormFallback() {
 export default function HomePage() {
   return (
     <div className="mx-auto w-full max-w-5xl px-4 pb-20 pt-8 md:pt-12">
+      <h1 className="sr-only">Check your site before you ship</h1>
       {/* Hero — boarding pass form */}
       <Suspense fallback={<ScanFormFallback />}>
         <ScanForm variant="boarding" />
@@ -110,7 +111,7 @@ export default function HomePage() {
             {
               n: "02",
               title: "We run the gate",
-              body: "Crawlability, meta, trust signals, and launch accidents — usually in under 10 seconds.",
+              body: "Crawlability, meta, trust signals, and launch accidents — typically within 30 seconds, depending on the target site.",
             },
             {
               n: "03",
