@@ -173,7 +173,7 @@ export default async function ReportPage({ params, searchParams }: Props) {
             priorityFixIds={result.priorityFixIds}
           />
 
-          {restFindings.length > 0 && (
+          {result.priorityFixIds.length > 0 && restFindings.length > 0 && (
             <div>
               <h3 className="mb-3 field-label !text-[var(--pass-mute)]">
                 Additional findings
