@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/canonical-checker", {
-  title: "Canonical Tag Checker — Find Missing or Wrong Canonical URLs",
+  title: "Check Canonical Tags Online — Find Canonical SEO Issues",
   description:
     "Check a URL for missing, conflicting, relative, redirected, or staging canonical tags. See the declared canonical and get practical fixes before Google indexes it.",
   openGraph: {
@@ -33,7 +33,7 @@ export default function CanonicalCheckerPage() {
           CLEARED / HOLD / DENIED.
         </>
       }
-      failuresHeading="Missing and incorrect canonical issues we catch"
+      failuresHeading="How to check canonical tags and common canonical issues"
       failuresLead="These silently dilute SEO value. You won't see an error — just slower ranking and fragmented authority."
       failures={[
         {
@@ -60,6 +60,11 @@ export default function CanonicalCheckerPage() {
           title: "Canonical points through a redirect",
           detail:
             "A declared canonical should resolve directly to the preferred 200 URL. Redirecting canonicals add ambiguity and make audits harder to interpret.",
+        },
+        {
+          title: "Alternative page with a proper canonical tag",
+          detail:
+            "Search Console may exclude a duplicate URL when it correctly points to another canonical page. Confirm the selected destination is the preferred 200 URL before treating the exclusion as an error.",
         },
       ]}
       fixHeading="Copy-paste canonical fixes"
@@ -96,6 +101,7 @@ export const metadata = {
         "Use one canonical per page — don't chain redirects through canonicals",
         "Verify with URL Inspection in Search Console after deploy",
         "Compare the declared canonical with Google's selected canonical in Search Console",
+        "Treat 'alternative page with proper canonical tag' as expected when the destination is intentional",
       ]}
       related={[
         {

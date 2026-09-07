@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/robots-txt-checker", {
-  title: "Check If robots.txt Blocks Google Before Website Launch",
+  title: "Google robots.txt Checker — Test If Crawlers Are Blocked",
   description:
     "Free robots.txt checker for go-live: paste your URL, detect Disallow:/ and missing sitemap lines, get a CLEARED / HOLD / DENIED stamp with copy-paste fixes.",
   openGraph: {
@@ -33,7 +33,7 @@ export default function RobotsTxtCheckerPage() {
           and stamp CLEARED / HOLD / DENIED with a fix you can paste.
         </>
       }
-      failuresHeading="Accidents we flag"
+      failuresHeading="How to check robots.txt and crawler blocking mistakes"
       failuresLead="These look harmless in staging and become permanent SEO debt after launch day."
       failures={[
         {
@@ -83,6 +83,7 @@ Sitemap: https://yourdomain.com/sitemap.xml`,
         "Confirm you are scanning the apex / www you will promote",
         "Open /robots.txt in an incognito window after deploy",
         "Submit sitemap in Search Console once the domain is live",
+        "Test the exact Googlebot path instead of assuming every user-agent receives the same rules",
       ]}
       related={[
         {

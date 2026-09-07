@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/noindex-checker", {
-  title: "Noindex Checker — Test Meta Robots and X-Robots-Tag",
+  title: "Check Noindex Tags Online — Meta Robots & X-Robots-Tag",
   description:
     "Check a production URL for meta robots noindex and X-Robots-Tag headers. Find accidental indexing blocks and get practical Next.js fixes.",
   openGraph: {
@@ -34,7 +34,7 @@ export default function NoindexCheckerPage() {
           headers, then stamp CLEARED / HOLD / DENIED.
         </>
       }
-      failuresHeading="Noindex accidents we catch"
+      failuresHeading="How to find noindex tags and fix unexpected exclusions"
       failuresLead="These hide your site from search engines — and the damage accumulates silently until someone checks."
       failures={[
         {
@@ -100,6 +100,7 @@ export function middleware(req: NextRequest) {
         "Use Search Console URL Inspection to confirm indexing is allowed",
         "Check robots.txt separately: robots blocking and noindex are different directives",
         "Re-scan after removing noindex — it can take days for Google to re-crawl",
+        "Keep noindex on private, duplicate, shared-result, and staging URLs when exclusion is intentional",
       ]}
       related={[
         {
