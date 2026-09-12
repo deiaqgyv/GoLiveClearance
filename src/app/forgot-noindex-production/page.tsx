@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/forgot-noindex-production", {
-  title: "Forgot noindex in Production — Fix Staging Leftovers Before Google Does",
+  title: "Forgot Noindex in Production? Fix It",
   description:
     "Forgot noindex in production? Detect meta robots noindex and X-Robots-Tag headers on your live site. Scan now and get CLEARED / HOLD / DENIED with exact fixes.",
   openGraph: {

@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/title-tag-checker", {
-  title: "Website Title Tag Length Checker Before Google Indexing",
+  title: "Title Tag Checker",
   description:
-    "Free title tag checker: paste your URL, verify <title> length, detect missing or truncated titles. Get CLEARED / HOLD / DENIED with copy-paste Next.js and HTML fixes.",
+    "Check a URL's title tag, length, and rendered HTML. Detect missing or unhelpful titles and get practical Next.js and HTML fixes.",
   openGraph: {
     title: "Title Tag Checker",
     description:

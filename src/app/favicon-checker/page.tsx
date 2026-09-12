@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/favicon-checker", {
-  title: "Favicon Checker — Verify Browser Tab Icon Before Launch",
+  title: "Favicon Checker",
   description:
-    "Free favicon checker: paste your URL, verify favicon exists and loads correctly. Detect missing favicons, broken icon links, and apple-touch-icon gaps. CLEARED / HOLD / DENIED.",
+    "Check whether a favicon exists and loads correctly. Detect missing icons, broken links, wrong responses, and apple-touch-icon gaps before launch.",
   openGraph: {
     title: "Favicon Checker",
     description:

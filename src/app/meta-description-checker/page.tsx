@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/meta-description-checker", {
-  title: "Meta Description Length Checker for Google Search Snippets",
+  title: "Meta Description Checker",
   description:
     "Free meta description checker: verify description length, detect missing or truncated descriptions, and get a focused result with copy-paste fixes.",
   openGraph: {

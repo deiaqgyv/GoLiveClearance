@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/sitemap-checker", {
-  title: "Check If sitemap.xml Is Live Before Website Launch",
+  title: "XML Sitemap Checker",
   description:
     "Free sitemap checker: paste your URL, verify sitemap.xml exists, is reachable, and lists valid URLs. Get CLEARED / HOLD / DENIED with Next.js sitemap fixes.",
   openGraph: {

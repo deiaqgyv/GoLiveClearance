@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/saas-pre-launch-checklist", {
-  title: "SaaS Pre-Launch Checklist — Go-Live Clearance for Indie SaaS",
+  title: "SaaS Pre-Launch Checklist",
   description:
     "SaaS pre-launch checklist: security headers, noindex, OG cards, payment pages, trust pages. Scan your deployed app and get CLEARED / HOLD / DENIED with fixes.",
   openGraph: {

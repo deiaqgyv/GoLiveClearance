@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/h1-tag-checker", {
-  title: "H1 Tag Checker — Find Missing, Empty, or Multiple H1s",
+  title: "H1 Tag Checker",
   description:
     "Check a web page for missing, empty, image-only, or multiple H1 tags. Inspect the primary heading before search engines and users reach the page.",
   openGraph: {

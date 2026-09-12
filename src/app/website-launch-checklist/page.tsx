@@ -6,7 +6,7 @@ import { ScanForm } from "@/components/scan-form";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = pageMetadata("/website-launch-checklist", {
-  title: "Website Launch Checklist — Free Pre-Launch Clearance",
+  title: "Website Launch Checklist",
   description:
     "The website launch checklist indie makers actually use: paste your URL, get CLEARED / HOLD / DENIED, and fix the blockers before Product Hunt or ads go live.",
   openGraph: {

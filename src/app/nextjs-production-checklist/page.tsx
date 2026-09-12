@@ -6,7 +6,7 @@ import { ScanForm } from "@/components/scan-form";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = pageMetadata("/nextjs-production-checklist", {
-  title: "Next.js Production Checklist — App Router Go-Live Clearance",
+  title: "Next.js Production Checklist",
   description:
     "Next.js production checklist for indie teams on Vercel: metadata, robots.ts, sitemap.ts, security headers, and a live CLEARED / HOLD / DENIED scan.",
   openGraph: {

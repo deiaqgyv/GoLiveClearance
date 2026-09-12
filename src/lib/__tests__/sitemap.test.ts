@@ -20,7 +20,7 @@ describe("sitemap", () => {
     expect(new Set(sitemap().map((entry) =>
       entry.lastModified instanceof Date ? entry.lastModified.toISOString() : entry.lastModified
     ))).toEqual(
-      new Set(["2026-08-24T00:00:00.000Z"])
+      new Set(["2026-09-11T00:00:00.000Z"])
     );
   });
 

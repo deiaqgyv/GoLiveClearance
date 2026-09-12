@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/noindex-checker", {
-  title: "Check Noindex Tags Online — Meta Robots & X-Robots-Tag",
+  title: "Noindex Tag Checker",
   description:
     "Check a production URL for meta robots noindex and X-Robots-Tag headers. Find accidental indexing blocks and get practical Next.js fixes.",
   openGraph: {

@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/security-headers-checker", {
-  title: "Next.js Security Headers Checker for HSTS, CSP & XFO",
+  title: "Security Headers Checker for Next.js",
   description:
-    "Free security headers checker for launch day: HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy. Get CLEARED / HOLD / DENIED with Next.js header fixes.",
+    "Check HSTS, CSP, X-Frame-Options, nosniff, and Referrer-Policy before launch. Get a clear verdict and practical Next.js header fixes.",
   openGraph: {
     title: "Security Headers Checker",
     description:

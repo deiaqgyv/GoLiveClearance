@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/canonical-checker", {
-  title: "Check Canonical Tags Online — Find Canonical SEO Issues",
+  title: "Canonical Tag Checker",
   description:
-    "Check a URL for missing, conflicting, relative, redirected, or staging canonical tags. See the declared canonical and get practical fixes before Google indexes it.",
+    "Check a URL for missing, conflicting, redirected, or staging canonical tags. See the declared canonical and practical fixes before indexing.",
   openGraph: {
     title: "Canonical Tag Checker",
     description:

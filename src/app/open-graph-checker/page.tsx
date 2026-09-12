@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/open-graph-checker", {
-  title: "Check OG Image & Social Preview Before Website Launch",
+  title: "Open Graph & Social Preview Checker",
   description:
     "Free Open Graph checker: paste your URL, verify og:title, og:image, og:description and Twitter cards. Get CLEARED / HOLD / DENIED with Next.js metadata fixes.",
   openGraph: {

@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/vercel-go-live-checklist", {
-  title: "Vercel Go-Live Checklist — Deploy, Domain & Launch Fixes",
+  title: "Vercel Go-Live Checklist",
   description:
     "Vercel go-live checklist: custom domain, HTTPS, NEXT_PUBLIC_SITE_URL, preview vs production, and a live CLEARED / HOLD / DENIED scan.",
   openGraph: {

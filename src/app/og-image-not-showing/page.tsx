@@ -3,9 +3,9 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/og-image-not-showing", {
-  title: "OG Image Not Showing — Debug Open Graph Image Issues",
+  title: "OG Image Not Showing? Troubleshoot It",
   description:
-    "OG image not showing on Twitter, Facebook, or LinkedIn? Paste your URL, find the cause (missing tags, wrong host, cache, size), and get copy-paste Next.js fixes.",
+    "Find why an OG image is missing on social previews. Check tags, host, response, dimensions, and cache, then apply practical Next.js fixes.",
   openGraph: {
     title: "OG Image Not Showing?",
     description:

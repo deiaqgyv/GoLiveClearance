@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/ssl-https-checker", {
-  title: "SSL / HTTPS Checker — Redirect & Certificate Before Launch",
+  title: "SSL & HTTPS Checker",
   description:
     "Free SSL and HTTPS checker: confirm HTTP→HTTPS redirect and certificate health before Product Hunt or ads. CLEARED / HOLD / DENIED with fix guidance.",
   openGraph: {

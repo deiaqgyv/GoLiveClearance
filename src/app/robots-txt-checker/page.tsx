@@ -3,7 +3,7 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/robots-txt-checker", {
-  title: "Google robots.txt Checker — Test If Crawlers Are Blocked",
+  title: "robots.txt Checker",
   description:
     "Free robots.txt checker for go-live: paste your URL, detect Disallow:/ and missing sitemap lines, get a CLEARED / HOLD / DENIED stamp with copy-paste fixes.",
   openGraph: {
