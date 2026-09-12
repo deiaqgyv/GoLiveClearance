@@ -17,7 +17,7 @@ export default function MethodologyPage() {
       </p>
 
       <div className="mb-10 border border-[var(--pass-line)] bg-[var(--gate-surface)] p-5 text-sm leading-relaxed">
-        <p className="field-label">Method version · Updated August 24, 2026</p>
+        <p className="field-label">Method version · Updated September 12, 2026</p>
         <p className="mt-3 text-[var(--foreground)]/80">
           The scanner makes bounded HTTP requests to public URLs, follows at most five redirects,
           and evaluates the returned HTML, response headers, robots.txt, and sitemap signals. A pass
@@ -25,6 +25,18 @@ export default function MethodologyPage() {
           security, accessibility, or legal compliance.
         </p>
       </div>
+
+      <section className="mb-10" aria-labelledby="direct-answer-heading">
+        <h2 id="direct-answer-heading" className="mb-4 text-xl font-bold">What does a GoLiveClearance result mean?</h2>
+        <p className="text-sm leading-relaxed text-[var(--foreground)]/80">
+          A result is a time-limited observation of the public response returned during one bounded scan.
+          CLEARED means no configured blocker or warning was found in that response; HOLD means warnings
+          remain; DENIED means at least one configured blocker was detected. The scanner does not crawl an
+          entire site, sign in, execute every user journey, perform penetration testing, or predict search
+          rankings. A later deployment, geographic response, bot-specific response, or unavailable resource
+          can produce a different result.
+        </p>
+      </section>
 
       <section className="mb-10">
         <h2 className="mb-4 text-xl font-bold">Inspection Criteria</h2>
@@ -69,7 +81,7 @@ export default function MethodologyPage() {
             title="robots.txt — Full Block"
             id="robots-txt"
             severity="blocker"
-            description="A blanket Disallow: / in robots.txt makes your entire site invisible to search engines."
+            description="A blanket Disallow: / prevents compliant crawlers from fetching the site. A known URL can still appear without a useful snippet, so robots.txt is not a removal mechanism."
           />
           <CheckItem
             title="XML Sitemap"
@@ -236,6 +248,17 @@ export default function MethodologyPage() {
           <li><a className="underline underline-offset-2" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security" rel="noreferrer">MDN: Strict-Transport-Security</a></li>
           <li><a className="underline underline-offset-2" href="https://ogp.me/" rel="noreferrer">Open Graph protocol</a></li>
         </ul>
+      </section>
+
+      <section className="mt-10" aria-labelledby="ai-crawlers-heading">
+        <h2 id="ai-crawlers-heading" className="mb-4 text-xl font-bold">Search crawlers, AI search crawlers, and training crawlers</h2>
+        <p className="mb-4 text-sm leading-relaxed text-[var(--foreground)]/80">
+          These are separate policy decisions. A site may allow Googlebot, Bingbot, OAI-SearchBot,
+          ChatGPT-User, ClaudeBot, or PerplexityBot for discovery and answer retrieval while applying a
+          different rule to model-training crawlers. GoLiveClearance currently detects only a complete
+          robots.txt block; it does not certify that every named crawler is allowed or that a crawler will
+          index or cite the page.
+        </p>
       </section>
     </div>
   );

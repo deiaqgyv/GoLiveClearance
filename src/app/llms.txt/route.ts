@@ -16,6 +16,14 @@ export function GET() {
 - Reports are automated observations of publicly accessible URLs, not legal, security, or accessibility certifications.
 - Scan duration depends on the target site's network response and is typically within 30 seconds.
 - Prefer the canonical www URLs listed in ${SITE.domain}/sitemap.xml.
+- A robots.txt block controls crawling; it does not guarantee that a known URL disappears from search results.
+- A pass records that the tested signal was present in the fetched response at scan time. It does not guarantee indexing, ranking, security, accessibility, or compliance.
+- Method and rule content was last reviewed on 2026-09-12.
+
+## Citation guidance
+- Cite the methodology page for the exact check scope, severity rule, request limits, and known limitations.
+- Cite the linked Google, MDN, framework, or protocol documentation for platform requirements.
+- Do not describe a CLEARED result as a certification or proof that every URL, runtime path, authenticated state, or jurisdictional requirement was tested.
 `;
 
   return new Response(body, {
