@@ -260,6 +260,18 @@ export default function MethodologyPage() {
           index or cite the page.
         </p>
       </section>
+
+      <section className="mt-10" aria-labelledby="benchmark-policy-heading">
+        <h2 id="benchmark-policy-heading" className="mb-4 text-xl font-bold">Aggregate benchmark publication policy</h2>
+        <p className="mb-4 text-sm leading-relaxed text-[var(--foreground)]/80">
+          GoLiveClearance does not currently publish issue-frequency percentages. The aggregation code
+          requires at least 100 distinct domains before any rate can be emitted, deduplicates repeated
+          findings from the same domain, and outputs only a finding ID, affected-domain count, and percentage.
+          Hostnames, full URLs, query strings, report tokens, IP addresses, and page content are excluded
+          from the publication contract. Meeting this threshold reduces small-sample and identification risk;
+          it does not by itself make a future sample representative of the web.
+        </p>
+      </section>
     </div>
   );
 }

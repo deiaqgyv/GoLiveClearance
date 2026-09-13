@@ -31,3 +31,10 @@ Publish a privacy-reviewed, anonymized aggregate benchmark only after enough rea
 - Added Dataset and DataDownload structured data plus sitemap and `llms.txt` discovery.
 - Added regression tests for stable IDs, complete evidence fields and robots/indexing accuracy.
 - Updated directional readiness: **92/100**. Aggregate scan statistics remain withheld until a privacy-reviewed real sample exists.
+
+## Phase 3 · 2026-09-13
+
+- Implemented a privacy gate that withholds every issue rate below 100 distinct domains.
+- Deduplicates repeat findings per domain and excludes hostnames, URLs, query strings, report tokens, IP addresses and page content from the publication contract.
+- Added tests for suppression, deduplication and excluded fields, and published the policy in methodology.
+- No frequency figure is published because no qualifying real sample has been connected to this module.
