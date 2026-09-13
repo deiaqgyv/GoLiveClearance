@@ -11,6 +11,8 @@ export function GET() {
 - ${SITE.domain}/seo-checkers: Browse focused SEO checkers.
 - ${SITE.domain}/launch-checklists: Browse launch checklists.
 - ${SITE.domain}/about: Learn who the service is for.
+- ${SITE.domain}/check-definitions: Human-readable check rules, evidence, severity and limitations.
+- ${SITE.domain}/data/check-definitions.json: Machine-readable versioned check definitions.
 
 ## Important guidance
 - Reports are automated observations of publicly accessible URLs, not legal, security, or accessibility certifications.

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { SITE } from "@/lib/site";
 import { TOOL_ROUTES } from "@/lib/tool-routes";
 
-const CONTENT_LAST_MODIFIED = new Date("2026-09-11T00:00:00.000Z");
+const CONTENT_LAST_MODIFIED = new Date("2026-09-13T00:00:00.000Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // SITE.domain is normalized to www; never list apex URLs (they 308 → www).
@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       "/privacy",
       "/terms",
       "/contact",
+      "/check-definitions",
     ].map((path) => ({
       url: `${base}${path}`,
       lastModified: CONTENT_LAST_MODIFIED,

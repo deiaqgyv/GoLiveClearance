@@ -23,3 +23,11 @@ Analyzed and implemented: 2026-09-12
 ## Remaining highest-impact work
 
 Publish a privacy-reviewed, anonymized aggregate benchmark only after enough real scans exist. The report must disclose sample size, collection period, deduplication, exclusions and detection limits. No aggregate error rate or external brand mention was invented in this release.
+
+## Phase 2 · 2026-09-13
+
+- Published a versioned human-readable catalog for ten core launch checks.
+- Added a JSON dataset containing observed signal, evidence, failure condition, severity and limitation for every check.
+- Added Dataset and DataDownload structured data plus sitemap and `llms.txt` discovery.
+- Added regression tests for stable IDs, complete evidence fields and robots/indexing accuracy.
+- Updated directional readiness: **92/100**. Aggregate scan statistics remain withheld until a privacy-reviewed real sample exists.
