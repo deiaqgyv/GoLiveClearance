@@ -22,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     },
     {
+      url: `${base}/benchmark-policy`,
+      lastModified: CONTENT_LAST_MODIFIED,
+      changeFrequency: "monthly",
+      priority: 0.5,
+    },
+    {
       url: `${base}/about`,
       lastModified: CONTENT_LAST_MODIFIED,
       changeFrequency: "monthly",

@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { aggregateBenchmarkObservations, benchmarkPrivacyRules } from "../benchmark-aggregation";
+import { aggregateBenchmarkObservations, benchmarkPrivacyRules, benchmarkPublicationStatus } from "../benchmark-aggregation";
 
 describe("benchmark aggregation privacy gate", () => {
   it("withholds rates below the minimum distinct-domain sample", () => {
@@ -17,5 +17,12 @@ describe("benchmark aggregation privacy gate", () => {
   it("excludes identifying and page-content fields from the publication contract", () => {
     expect(benchmarkPrivacyRules.excludedFields).toContain("hostname");
     expect(benchmarkPrivacyRules.excludedFields).toContain("page content");
+  });
+
+  it("publishes an honest machine-readable status before collection is connected", () => {
+    expect(benchmarkPublicationStatus.status).toBe("collection_not_connected");
+    expect(benchmarkPublicationStatus.currentPublishedSample).toBe(0);
+    expect(benchmarkPublicationStatus.publishedRates).toEqual([]);
+    expect(benchmarkPublicationStatus.note).toContain("not a measured count");
   });
 });

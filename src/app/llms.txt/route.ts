@@ -13,6 +13,8 @@ export function GET() {
 - ${SITE.domain}/about: Learn who the service is for.
 - ${SITE.domain}/check-definitions: Human-readable check rules, evidence, severity and limitations.
 - ${SITE.domain}/data/check-definitions.json: Machine-readable versioned check definitions.
+- ${SITE.domain}/benchmark-policy: Anonymous benchmark publication threshold, privacy rules, limitations and current collection status.
+- ${SITE.domain}/data/benchmark-policy.json: Machine-readable benchmark policy and current published-data status.
 
 ## Important guidance
 - Reports are automated observations of publicly accessible URLs, not legal, security, or accessibility certifications.

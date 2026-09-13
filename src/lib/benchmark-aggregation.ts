@@ -41,3 +41,14 @@ export const benchmarkPrivacyRules = {
   excludedFields: ["hostname", "full URL", "query string", "report token", "IP address", "page content"],
   deduplication: "One domain contributes at most once to each finding ID.",
 } as const;
+
+export const benchmarkPublicationStatus = {
+  name: "GoLiveClearance anonymous benchmark publication policy",
+  version: "2026-09-13",
+  status: "collection_not_connected",
+  currentPublishedSample: 0,
+  publicationThresholdDistinctDomains: MIN_DISTINCT_DOMAINS,
+  publishedRates: [],
+  privacyRules: benchmarkPrivacyRules,
+  note: "No production observation source is connected. Zero describes the published dataset, not a measured count of scans or users.",
+} as const;

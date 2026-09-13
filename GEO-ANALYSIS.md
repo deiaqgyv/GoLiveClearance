@@ -38,3 +38,10 @@ Publish a privacy-reviewed, anonymized aggregate benchmark only after enough rea
 - Deduplicates repeat findings per domain and excludes hostnames, URLs, query strings, report tokens, IP addresses and page content from the publication contract.
 - Added tests for suppression, deduplication and excluded fields, and published the policy in methodology.
 - No frequency figure is published because no qualifying real sample has been connected to this module.
+
+## Phase 4 · 2026-09-13
+
+- Published a standalone human-readable and machine-readable anonymous benchmark policy.
+- The current status is explicitly `collection_not_connected`; the zero published sample is not presented as a measured scan or user count.
+- Retains the 100-distinct-domain gate, deduplication rule, excluded identifiers and no-rates-below-threshold behavior.
+- Updated directional readiness: **94/100**. Real rates remain unavailable until a privacy-reviewed observation source meets the gate.
