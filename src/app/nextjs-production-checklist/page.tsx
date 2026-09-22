@@ -83,8 +83,8 @@ export default function NextjsProductionChecklistPage() {
       <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--pass-mute)] md:text-base">
         Local looks fine. Preview looks fine. Production still ships with{" "}
         <code className="bg-[var(--secondary)] px-1 font-mono text-xs">noindex</code>,
-        missing headers, or OG images on the wrong host. Scan the live URL, then
-        paste the AI prompt into your editor.
+        missing headers, or OG images on the wrong host. This Next.js production
+        checklist scans the live URL, then you paste the AI prompt into your editor.
       </p>
 
       <section className="mt-10">
@@ -95,6 +95,35 @@ export default function NextjsProductionChecklistPage() {
         >
           <ScanForm variant="compact" />
         </Suspense>
+      </section>
+
+      <section className="mt-14">
+        <h2 className="font-mono text-xl font-bold text-stone-900">
+          When this checklist beats a single SEO checker
+        </h2>
+        <p className="mt-2 text-sm text-stone-500">
+          Use it for an App Router + Vercel launch. Use a focused checker when you already know the failure class.
+        </p>
+        <ul className="mt-6 space-y-4">
+          <li className="border border-stone-200 bg-white py-3 pl-4 pr-3">
+            <p className="text-sm font-semibold text-stone-900">Use this page</p>
+            <p className="mt-1 text-sm leading-relaxed text-stone-600">
+              Local and Preview look fine, but production may still ship noindex, a preview canonical, missing security headers, or OG URLs on the Vercel host. You need the launch bundle, not one tag.
+            </p>
+          </li>
+          <li className="border border-stone-200 bg-white py-3 pl-4 pr-3">
+            <p className="text-sm font-semibold text-stone-900">Problem → aftermath → next step</p>
+            <p className="mt-1 text-sm leading-relaxed text-stone-600">
+              Problem: staging habits leak into the production deployment. Aftermath: Google never indexes the live domain, or social cards point at a disappearing preview URL. Next step: set metadataBase, robots.ts, headers, and the custom domain, then scan the production URL.
+            </p>
+          </li>
+          <li className="border border-stone-200 bg-white py-3 pl-4 pr-3">
+            <p className="text-sm font-semibold text-stone-900">Adjacent checks</p>
+            <p className="mt-1 text-sm leading-relaxed text-stone-600">
+              If Search Console shows two URL variants, open the canonical checker. If the homepage has no text heading in view-source, open the H1 checker. For a stack-agnostic launch list, use the website launch checklist.
+            </p>
+          </li>
+        </ul>
       </section>
 
       <section className="mt-14">
@@ -138,6 +167,24 @@ export default function NextjsProductionChecklistPage() {
           Related
         </h2>
         <ul className="mt-3 space-y-2 text-sm">
+          <li>
+            <Link
+              href="/canonical-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              Canonical checker
+            </Link>
+            <span className="text-stone-500"> — preview-host and www duplicates</span>
+          </li>
+          <li>
+            <Link
+              href="/h1-tag-checker"
+              className="font-medium text-amber-800 underline-offset-2 hover:underline"
+            >
+              H1 tag checker
+            </Link>
+            <span className="text-stone-500"> — heading present in the first HTML</span>
+          </li>
           <li>
             <Link
               href="/robots-txt-checker"

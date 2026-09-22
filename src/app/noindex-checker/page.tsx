@@ -3,13 +3,13 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/noindex-checker", {
-  title: "Noindex Tag Checker",
+  title: "Meta Noindex Checker",
   description:
-    "Check a production URL for meta robots noindex and X-Robots-Tag headers. Find accidental indexing blocks and get practical Next.js fixes.",
+    "Meta noindex checker for robots noindex and X-Robots-Tag headers. Find accidental indexing blocks on a live URL and copy Next.js fixes.",
   openGraph: {
-    title: "Noindex Checker",
+    title: "Meta Noindex Checker",
     description:
-      "Staging noindex is the #1 silent launch killer. Scan your production URL and catch it before Google does.",
+      "Paste your production URL. Catch leftover staging noindex before Google skips the page.",
     type: "website",
   },
 });
@@ -19,7 +19,7 @@ export default function NoindexCheckerPage() {
     <ToolLanding
       focus="noindex"
       eyebrow="Indexability · noindex"
-      title="Noindex Checker"
+      title="Meta Noindex Checker"
       lead={
         <>
           The single most common launch accident:{" "}

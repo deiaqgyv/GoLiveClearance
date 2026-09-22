@@ -3,13 +3,13 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/meta-description-checker", {
-  title: "Meta Description Checker",
+  title: "Meta Description Length Check",
   description:
-    "Free meta description checker: verify description length, detect missing or truncated descriptions, and get a focused result with copy-paste fixes.",
+    "Meta description length check for missing, short, or truncated snippets. Paste a URL and get a focused result with copy-paste fixes.",
   openGraph: {
-    title: "Meta Description Checker",
+    title: "Meta Description Length Check",
     description:
-      "Paste your URL. Catch missing, too short, or truncated meta descriptions that hurt SERP click-through.",
+      "Paste your URL. Catch missing or truncated meta descriptions that waste search-result clicks.",
     type: "website",
   },
 });
@@ -19,7 +19,7 @@ export default function MetaDescriptionCheckerPage() {
     <ToolLanding
       focus="description"
       eyebrow="On-page SEO · Meta description"
-      title="Meta Description Checker"
+      title="Meta Description Length Check"
       lead={
         <>
           The meta description is the two-line snippet under your title in

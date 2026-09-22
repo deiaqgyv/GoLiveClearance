@@ -15,6 +15,12 @@ export interface ToolRelated {
   note?: string;
 }
 
+export interface ToolDecision {
+  heading?: string;
+  lead?: string;
+  items: ToolFailure[];
+}
+
 interface ToolLandingProps {
   eyebrow: string;
   title: string;
@@ -30,6 +36,7 @@ interface ToolLandingProps {
   related: ToolRelated[];
   category?: { label: string; href: string };
   focus?: ScanFocus;
+  decision?: ToolDecision;
 }
 
 export function ToolLanding({
@@ -47,6 +54,7 @@ export function ToolLanding({
   related,
   category = { label: "SEO checkers", href: "/seo-checkers" },
   focus,
+  decision,
 }: ToolLandingProps) {
   return (
     <div className="mx-auto max-w-5xl px-4 pb-20 pt-10 md:pt-14">
@@ -68,6 +76,30 @@ export function ToolLanding({
           <ScanForm variant="compact" focus={focus} focusLabel={title} />
         </Suspense>
       </section>
+
+      {decision && decision.items.length > 0 ? (
+        <section className="mt-14">
+          <h2 className="font-mono text-xl font-bold text-stone-900">
+            {decision.heading ?? "When to use this check"}
+          </h2>
+          {decision.lead ? (
+            <p className="mt-2 text-sm text-stone-500">{decision.lead}</p>
+          ) : null}
+          <ul className="mt-6 space-y-4">
+            {decision.items.map((item) => (
+              <li
+                key={item.title}
+                className="border border-stone-200 bg-white py-3 pl-4 pr-3"
+              >
+                <p className="text-sm font-semibold text-stone-900">{item.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-stone-600">
+                  {item.detail}
+                </p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
 
       <section className="mt-14">
         <h2 className="font-mono text-xl font-bold text-stone-900">

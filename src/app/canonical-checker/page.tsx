@@ -3,13 +3,13 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/canonical-checker", {
-  title: "Canonical Tag Checker",
+  title: "SEO Canonical Check",
   description:
-    "Check a URL for missing, conflicting, redirected, or staging canonical tags. See the declared canonical and practical fixes before indexing.",
+    "SEO canonical check for missing canonical tags, preview-host canonicals, and conflicting og:url. Paste a URL and get a CLEARED / HOLD / DENIED result.",
   openGraph: {
-    title: "Canonical Tag Checker",
+    title: "SEO Canonical Check",
     description:
-      "Paste your URL. Catch missing or misconfigured canonical tags that split SEO value across URL variants.",
+      "Paste your URL. Catch missing canonical tags and canonical issues before Google splits your ranking signals.",
     type: "website",
   },
 });
@@ -19,7 +19,7 @@ export default function CanonicalCheckerPage() {
     <ToolLanding
       focus="canonical"
       eyebrow="On-page SEO · Canonical URL"
-      title="Canonical Tag Checker"
+      title="Check Canonical Tags"
       lead={
         <>
           Without a{" "}
@@ -103,7 +103,38 @@ export const metadata = {
         "Compare the declared canonical with Google's selected canonical in Search Console",
         "Treat 'alternative page with proper canonical tag' as expected when the destination is intentional",
       ]}
+      decision={{
+        heading: "When a canonical check is the right first scan",
+        lead: "Use this page when ranking signals look split across URL variants. Use a heading or Next.js launch checklist when the problem is markup or production config instead.",
+        items: [
+          {
+            title: "Use this checker",
+            detail:
+              "www vs non-www, trailing slash, HTTP vs HTTPS, or a preview host still appears in Search Console as a competing page. You need to know whether rel=canonical exists, is absolute, and resolves to the production 200 URL.",
+          },
+          {
+            title: "Problem → aftermath → next step",
+            detail:
+              "Problem: Google may index more than one URL for the same document. Aftermath: links and impressions split, so neither URL ranks well. Next step: set one absolute HTTPS canonical, then confirm Google's selected canonical matches it.",
+          },
+          {
+            title: "Pick the adjacent tool, not another copy of this page",
+            detail:
+              "If the page is noindexed, canonical will not recover it — open the noindex checker. If the heading is missing from HTML, open the H1 checker. If robots.ts, metadataBase, or Vercel preview hosts are the launch risk, open the Next.js production checklist.",
+          },
+        ],
+      }}
       related={[
+        {
+          href: "/h1-tag-checker",
+          label: "H1 tag checker",
+          note: "heading issues are a different failure than duplicate URLs",
+        },
+        {
+          href: "/nextjs-production-checklist",
+          label: "Next.js production checklist",
+          note: "metadataBase and preview-host canonicals on App Router",
+        },
         {
           href: "/title-tag-checker",
           label: "Title tag checker",

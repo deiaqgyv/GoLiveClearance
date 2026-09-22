@@ -3,13 +3,13 @@ import { pageMetadata } from "@/lib/seo";
 import { ToolLanding } from "@/components/tool-landing";
 
 export const metadata: Metadata = pageMetadata("/h1-tag-checker", {
-  title: "H1 Tag Checker",
+  title: "H1 Tag Check",
   description:
-    "Check a web page for missing, empty, image-only, or multiple H1 tags. Inspect the primary heading before search engines and users reach the page.",
+    "H1 check for missing, empty, image-only, or multiple H1 tags. Paste a URL to inspect the primary heading before the page is indexed.",
   openGraph: {
-    title: "H1 Tag Checker",
+    title: "H1 Tag Check",
     description:
-      "Paste your URL. Catch missing or broken H1 tags that confuse search engines and hurt accessibility.",
+      "Paste your URL. Run an H1 check for missing or competing headings before launch.",
     type: "website",
   },
 });
@@ -19,7 +19,7 @@ export default function H1TagCheckerPage() {
     <ToolLanding
       focus="h1"
       eyebrow="On-page SEO · Heading structure"
-      title="H1 Tag Checker"
+      title="H1 Tag Check"
       lead={
         <>
           The <code className="bg-[var(--secondary)] px-1 font-mono text-xs">&lt;h1&gt;</code> tag
@@ -93,7 +93,38 @@ Provide heroHeadline from the homepage controller.`,
         "H1 should appear in the initial server-rendered HTML",
         "Use H2-H6 for sub-sections, don't skip heading levels",
       ]}
+      decision={{
+        heading: "When to inspect H1 before title or canonical",
+        lead: "This check answers one question: does the first HTML response contain a readable primary heading? It does not rank titles, Open Graph, or duplicate URLs.",
+        items: [
+          {
+            title: "Use this checker",
+            detail:
+              "The page is a JS shell, a logo-as-heading template, or a CMS layout that sometimes renders an empty H1. You want evidence from the fetched HTML, not from a hydrated screenshot.",
+          },
+          {
+            title: "Problem → aftermath → next step",
+            detail:
+              "Problem: crawlers and screen readers lack a topic anchor. Aftermath: the page is harder to interpret and may lose heading-based snippet context. Next step: put one text H1 in the server HTML, then re-scan the live URL.",
+          },
+          {
+            title: "Adjacent checks",
+            detail:
+              "Title and H1 should describe the same topic in different words — use the title tag checker for the document title. Canonical is for URL variants, not headings. After App Router launch, confirm the heading still exists in production HTML with the Next.js checklist.",
+          },
+        ],
+      }}
       related={[
+        {
+          href: "/canonical-checker",
+          label: "Canonical checker",
+          note: "duplicate URLs are a different failure than missing headings",
+        },
+        {
+          href: "/nextjs-production-checklist",
+          label: "Next.js production checklist",
+          note: "SSR/SSG so the H1 is in the first HTML",
+        },
         {
           href: "/title-tag-checker",
           label: "Title tag checker",

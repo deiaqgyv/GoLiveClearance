@@ -29,4 +29,18 @@ describe("pageMetadata", () => {
     expect(meta.openGraph?.siteName).toBe("Go-Live Clearance");
     expect(meta.openGraph?.images).toBeDefined();
   });
+
+  it("keeps rewritten checker titles inside the 62-character SERP budget", () => {
+    const suffix = " | Go-Live Clearance";
+    const titles = [
+      "SEO Canonical Check",
+      "H1 Tag Check",
+      "Meta Noindex Checker",
+      "Meta Description Length Check",
+      "Next.js Production Checklist",
+    ];
+    for (const title of titles) {
+      expect(`${title}${suffix}`.length).toBeLessThanOrEqual(62);
+    }
+  });
 });

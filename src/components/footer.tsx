@@ -4,6 +4,9 @@ const GROUPS = [
   {
     label: "Tools",
     links: [
+      ["Canonical checker", "/canonical-checker"],
+      ["H1 tag checker", "/h1-tag-checker"],
+      ["Next.js production checklist", "/nextjs-production-checklist"],
       ["SEO checkers", "/seo-checkers"],
       ["Launch checklists", "/launch-checklists"],
       ["Social preview", "/social-preview"],

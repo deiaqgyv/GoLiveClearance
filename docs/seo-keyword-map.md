@@ -18,10 +18,10 @@ This file is the source of truth for the site's target queries. Keep one primary
 
 ## Search Console evidence — 2026-08-28
 
-- `/canonical-checker`: 271 impressions; observed queries include `track canonical tags`, `seo canonical check`, `canonical missing`, and `canonical issues`.
-- `/h1-tag-checker`: 149 impressions; observed queries include `h1 check`, `h1 checker`, `check h1 h2 tags`, and `h1 tag checker`.
-- `/noindex-checker`: 57 impressions; observed queries include `meta noindex checker`, `check for noindex`, and `noindex check`.
-- `/title-tag-checker`: 16 impressions and the site's first recorded click.
+- `/canonical-checker`: 271 impressions; observed queries include `track canonical tags`, `seo canonical check`, `canonical missing`, and `canonical issues`. Title now leads with **SEO Canonical Check**.
+- `/h1-tag-checker`: 149 impressions; observed queries include `h1 check`, `h1 checker`, `check h1 h2 tags`, and `h1 tag checker`. Title now leads with **H1 Tag Check**.
+- `/noindex-checker`: 57 impressions; observed queries include `meta noindex checker`, `check for noindex`, and `noindex check`. Title now leads with **Meta Noindex Checker**.
+- `/meta-description-checker`: title now leads with **Meta Description Length Check** to match length-check queries without colliding with the title-tag page.
 
 ## Guardrails
 
