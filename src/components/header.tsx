@@ -36,6 +36,18 @@ export function Header() {
             HTTPS
           </Link>
           <Link
+            href="/open-graph-checker"
+            className="hidden font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)] md:inline"
+          >
+            OG
+          </Link>
+          <Link
+            href="/sitemap-checker"
+            className="hidden font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)] lg:inline"
+          >
+            Sitemap
+          </Link>
+          <Link
             href="/website-launch-checklist"
             className="font-mono text-[11px] font-medium uppercase tracking-[0.12em] text-[var(--pass-mute)] hover:text-[var(--pass-ink)]"
           >

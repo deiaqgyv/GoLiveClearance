@@ -126,7 +126,7 @@ export function middleware(req: NextRequest) {
           label: "Website launch checklist",
         },
         {
-          href: "/nextjs-launch-checklist",
+          href: "/nextjs-production-checklist",
           label: "Next.js launch checklist",
         },
         { href: "/methodology", label: "Methodology" },

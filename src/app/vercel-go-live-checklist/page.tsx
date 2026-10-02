@@ -93,7 +93,7 @@ NEXT_PUBLIC_SITE_URL=https://www.yourdomain.com
       ]}
       related={[
         {
-          href: "/nextjs-launch-checklist",
+          href: "/nextjs-production-checklist",
           label: "Next.js launch checklist",
         },
         {

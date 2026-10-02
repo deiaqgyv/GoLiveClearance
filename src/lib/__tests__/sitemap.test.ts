@@ -10,9 +10,14 @@ describe("sitemap", () => {
       "/social-preview",
       "/security",
       "/privacy",
-      "/terms",
-      "/contact",
+      "/open-graph-checker",
+      "/sitemap-checker",
     ]));
+    expect(paths).not.toContain("/contact");
+    expect(paths).not.toContain("/terms");
+    expect(paths).not.toContain("/benchmark-policy");
+    expect(paths).not.toContain("/disallow-all-robots-txt");
+    expect(paths).not.toContain("/forgot-noindex-production");
   });
 
   it("uses the verified content update date instead of the deploy time", () => {
@@ -20,7 +25,7 @@ describe("sitemap", () => {
     expect(new Set(sitemap().map((entry) =>
       entry.lastModified instanceof Date ? entry.lastModified.toISOString() : entry.lastModified
     ))).toEqual(
-      new Set(["2026-09-13T00:00:00.000Z"])
+      new Set(["2026-10-02T00:00:00.000Z"])
     );
   });
 
