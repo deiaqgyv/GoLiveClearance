@@ -12,12 +12,18 @@ describe("sitemap", () => {
       "/privacy",
       "/open-graph-checker",
       "/sitemap-checker",
+      "/vercel-go-live-checklist",
+      "/saas-pre-launch-checklist",
+      "/forgot-noindex-production",
+      "/missing-security-headers-nextjs",
+      "/disallow-all-robots-txt",
+      "/og-image-not-showing",
+      "/check-definitions",
+      "/benchmark-policy",
     ]));
     expect(paths).not.toContain("/contact");
     expect(paths).not.toContain("/terms");
-    expect(paths).not.toContain("/benchmark-policy");
-    expect(paths).not.toContain("/disallow-all-robots-txt");
-    expect(paths).not.toContain("/forgot-noindex-production");
+    expect(paths).toHaveLength(29);
   });
 
   it("uses the verified content update date instead of the deploy time", () => {
@@ -25,7 +31,7 @@ describe("sitemap", () => {
     expect(new Set(sitemap().map((entry) =>
       entry.lastModified instanceof Date ? entry.lastModified.toISOString() : entry.lastModified
     ))).toEqual(
-      new Set(["2026-10-02T00:00:00.000Z"])
+      new Set(["2026-10-09T00:00:00.000Z"])
     );
   });
 
